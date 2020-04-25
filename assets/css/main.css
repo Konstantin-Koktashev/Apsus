@@ -1,0 +1,70 @@
+/*Main Container*/
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 5fr 1fr;
+  width: 100vw;
+  height: 100vh;
+  gap: 1em;
+  /* padding: 0.3em;   */
+}
+
+/*Grid Areas*/
+header {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  /* padding: 1em; */
+}
+
+main {
+  grid-column: 1/-1;
+}
+footer {
+  grid-column: 1/-1;
+}
+
+/*NavBar*/
+header h3 {
+  display: inline;
+  position: absolute;
+  right: 50%;
+}
+header .hambuger-menue {
+  display: inline;
+  padding: 1em;
+}
+nav {
+  display: flex;
+  height: 100vh;
+  background: rgb(49, 49, 49);
+  position: fixed;
+  left: 0px;
+  top: 0;
+  width: fit-content;
+  transition: transform 0.4s;
+  transform: translateX(-100%);
+  width: 50vw;
+}
+nav .nav-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.5em;
+  position: relative;
+}
+nav .nav-links a {
+  margin-block-end: 1.5em;
+  color: rgb(255, 255, 255);
+}
+
+.close-nav-btn {
+  position: absolute;
+  top: 0;
+  left: 87%;
+  padding: 0.4em;
+}
+
+.show-menue{
+      transform: translateX(0%);
+}
