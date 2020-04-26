@@ -1,6 +1,6 @@
 
 const Router = ReactRouterDOM.HashRouter;
-const { Route, Switch, NavLink ,Link} = ReactRouterDOM;
+const { withRouter , NavLink ,Link} = ReactRouterDOM;
 
 export class NavBar extends React.Component {
     state={
@@ -13,6 +13,7 @@ export class NavBar extends React.Component {
         isSideMenueShown:false,
         isMainPage:true
     }
+    
     componentDidMount(){
 
       // if(currentLocation!=='/') this.setState({isMainPage:false})
