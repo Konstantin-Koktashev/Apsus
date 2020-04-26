@@ -9,7 +9,7 @@ function load(key, defaultValue = null) {
     else return JSON.parse(value);
 }
 
-export default {
+export const StorageServices= {
     store,
     load
 }

@@ -1,9 +1,12 @@
+import { StorageServices } from "./storageService.js";
+
 const gDefaultEmails = [
   _creatEmail('Wasup', 'ThisIsBody'),
   _creatEmail('Wasup', 'ThisIsBody'),
 ];
 var gEmails = null;
 const STORAGE_KEY = 'emails';
+_creatEmails()
 
 export const EmailServices = {
   query,
@@ -15,8 +18,8 @@ export const EmailServices = {
 function query() {}
 
 function _creatEmails() {
-  gEmails = storageService.load(STORAGE_KEY, gDefaultCars);
-  storageService.store(STORAGE_KEY, gCars);
+  gEmails = StorageServices.load(STORAGE_KEY, gDefaultEmails);
+  StorageServices.store(STORAGE_KEY, gEmails);
 }
 function _creatEmail(subject, body, isRead, SentAt) {
   return {
