@@ -299,7 +299,7 @@ h3 {
   cursor: pointer;
 }
 
-.pinnedNotesContainer {
+.pinnedNotesContainer, .gallery {
   width: 90vw;
   height: 100vh;
   background-color: #eee;
@@ -311,7 +311,7 @@ h3 {
   grid-row-gap: 5px;
 }
 
-.pinnedNotesContainer div {
+.pinnedNotesContainer div, .gallery div {
   width: 80%;
   height: 80%;
   margin: auto;

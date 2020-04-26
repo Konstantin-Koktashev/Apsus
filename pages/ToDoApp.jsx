@@ -1,5 +1,7 @@
 import InputForm from '../cmps/ToDoCmps/InputForm.jsx';
 import PinnedNotes from '../cmps/ToDoCmps/PinnedNotes.jsx';
+import Gallery from '../cmps/ToDoCmps/Gallery.jsx';
+
 export class ToDoApp extends React.Component{
     state={
         content: 'pinned'
@@ -25,6 +27,7 @@ export class ToDoApp extends React.Component{
 
             <div className="insertNoteContainer">
                 <InputForm></InputForm>
+                
             </div>
 
             <div className="contentToggler">
@@ -32,7 +35,8 @@ export class ToDoApp extends React.Component{
             </div>
 
             <main className="mainContent">
-            <PinnedNotes></PinnedNotes>
+            {/* <PinnedNotes></PinnedNotes> */}
+            <Gallery></Gallery>
             </main>
 
             </div>
