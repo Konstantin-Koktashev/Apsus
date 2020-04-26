@@ -1,10 +1,10 @@
-import InputForm from '../cmps/ToDoCmps/InputForm.jsx';
-import PinnedNotes from '../cmps/ToDoCmps/PinnedNotes.jsx';
-import Gallery from '../cmps/ToDoCmps/Gallery.jsx';
+import InputForm from '../ToDoApp/ToDoCmps/InputForm.jsx';
+import PinnedNotes from '../ToDoApp/ToDoCmps/PinnedNotes.jsx';
+import Gallery from '../ToDoApp/ToDoCmps/Gallery.jsx';
 
 export class ToDoApp extends React.Component{
     state={
-        content: 'pinned'
+        content: 'galary'
     }
     componentDidMount(){}
     render(){
