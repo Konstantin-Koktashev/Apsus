@@ -71,6 +71,3 @@ export class NavBar extends React.Component {
 
 
 
-If the component you are rendering it doesn't have a this.props.location, then it won't have the location to pass down to NavBar.
-
-Though, I'd recommend using either withRouter or useLocation in your NavBar component if it needs access to the location without being a Route itself. As a note, useLocation is only usable in hook components
