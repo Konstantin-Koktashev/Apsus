@@ -38,11 +38,4 @@ function remove(emailId) {
 }
 
 function save(emailId) {}
-
-function getEmailById(emailId) {
-  const email = gEmails.find((email) => email.id === emailId);
-  return Promise.resolve(email);
-}
-function _getIdxById(emailId) {
-  return gEmails.findIndex((email) => email.id === emailId);
-}
+s
