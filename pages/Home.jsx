@@ -5,7 +5,7 @@ export function Home(){
         <main>
             <h1>
                 Forget Everything You
-                Knew About Insurance
+                Knew About Efficency
             </h1>
             <h4>
                 Instant Everything. Great Prices. Big Heart

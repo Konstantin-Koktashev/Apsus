@@ -1,11 +1,17 @@
-export class EmailApp extends React.Component{
-    state={
+import { EmailList } from "../cmps/EmailComponents/EmailList.jsx";
 
-    }
-    componentDidMount(){}
-    render(){
-        return(
-            <h1>Hello</h1>
-        )
-    }
+export class EmailApp extends React.Component {
+  state = {
+      emails:[],
+      filterBy:''
+  };
+  componentDidMount() {}
+  render() {
+    return (
+      <div className="email-wrapper">
+        <h5>primary</h5>
+        <EmailList></EmailList>
+      </div>
+    );
+  }
 }
