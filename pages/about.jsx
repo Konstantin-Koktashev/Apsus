@@ -9,6 +9,14 @@ export function About(){
             <h3>How Are We Different?</h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt error aliquam sapiente veritatis ducimus, sunt fugiat culpa reprehenderit quos. Voluptatum, nisi quibusdam aliquid dolores tenetur placeat odio iure voluptas beatae.</p>
         </section>
+        <section className="comparison">
+            <h3>How Are We Different?</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt error aliquam sapiente veritatis ducimus, sunt fugiat culpa reprehenderit quos. Voluptatum, nisi quibusdam aliquid dolores tenetur placeat odio iure voluptas beatae.</p>
+        </section>
+            <section className="comparison">
+                <h3>How Are We Different?</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt error aliquam sapiente veritatis ducimus, sunt fugiat culpa reprehenderit quos. Voluptatum, nisi quibusdam aliquid dolores tenetur placeat odio iure voluptas beatae.</p>
+            </section>
         </div>
 
     )
