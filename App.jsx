@@ -2,7 +2,7 @@ import { NavBar } from './cmps/NavBar.jsx';
 import { Home } from './pages/Home.jsx';
 import { About } from './pages/about.jsx';
 import { Overview } from './pages/Overview.jsx';
-import { EmailApp } from './pages/EmailApp.jsx';
+import { EmailApp } from './EmailApp/EmailApp.jsx';
 import { ToDoApp } from './ToDoApp/ToDoApp.jsx';
 import { BookApp } from './pages/BookApp.jsx';
 const Router = ReactRouterDOM.HashRouter;

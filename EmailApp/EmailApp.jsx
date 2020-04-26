@@ -1,4 +1,4 @@
-import { EmailList } from "../cmps/EmailComponents/EmailList.jsx";
+import { EmailList } from "../EmailApp/EmailComponents/EmailList.jsx";
 
 export class EmailApp extends React.Component {
   state = {
