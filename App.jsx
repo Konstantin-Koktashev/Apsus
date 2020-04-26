@@ -1,6 +1,7 @@
 import { NavBar } from './cmps/NavBar.jsx';
 import { Home } from './pages/Home.jsx';
 import { About } from './pages/about.jsx';
+import { Overview } from './pages/Overview.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch, NavLink } = ReactRouterDOM;
 // const History = History.createBrowserHistory();
@@ -11,10 +12,10 @@ export class App extends React.Component {
       <Router>
             <NavBar  location={this.props.location}></NavBar>
         <Switch>
-            <Route path="/about" component={About} />
           <div className="wrapper">
-            {/* <Route exact component={SprintApp} path="/app" /> */}
             <Route exact  path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route exact component={Overview} path="/app" />
             {/* <Route component={About} path="/faq" />
               <Route component={About} path="/signup" />
               <Route component={About} path="/login" /> */}
