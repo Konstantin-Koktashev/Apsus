@@ -5,7 +5,7 @@ export class ToDoApp extends React.Component{
     componentDidMount(){}
     render(){
         return(
-            <h1>Hello</h1>
+            <h1>Manage your notes</h1>
         )
     }
     
