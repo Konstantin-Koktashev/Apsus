@@ -1,4 +1,6 @@
-const { NavLink } = ReactRouterDOM
+
+const Router = ReactRouterDOM.HashRouter;
+const { Route, Switch, NavLink ,Link} = ReactRouterDOM;
 
 export class NavBar extends React.Component {
     state={
@@ -8,26 +10,41 @@ export class NavBar extends React.Component {
         ,closeBtn:{
             id:2
         },
-        isSideMenueShown:false
+        isSideMenueShown:false,
+        isMainPage:true
     }
+    componentDidMount(){
+
+      // if(currentLocation!=='/') this.setState({isMainPage:false})
+  }
     handleClick=(id)=>{
         (id===1)?this.setState({isSideMenueShown:true}):this.setState({isSideMenueShown:false})  
     }
     render(){
         let classToSelect = (this.state.isSideMenueShown)? 'show-menue':''
+        let headerBtnClass =(this.state.isMainPage)? '': 'show'
         return (
       <header>
+        <div className="logon-hamburger-wrapper">
           <button className="hambuger-menue" onClick={() =>this.handleClick(this.state.hamburgerMenue.id)}>
               	&#x2630;
           </button>
-          <h3>
+            <h3><span>Lemonade</span></h3>
+          </div>
+                {/* <Link to="/app" className="secondary-call-to-action-btn"> */}
+                <Link to="/app" className={`secondary-call-to-action-btn ${headerBtnClass}`}>
+          <button >
             App
-        </h3>
+          </button>
+          </Link>
     <nav className={classToSelect}>
 
       <section className="nav-links">
         <NavLink exact to="/">
           Home
+        </NavLink>
+        <NavLink exact to="/faq">
+          FAQ
         </NavLink>
         <NavLink exact to="/about">
           About
