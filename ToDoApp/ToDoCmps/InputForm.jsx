@@ -3,12 +3,18 @@
 export default class InputForm extends React.Component{
 
     state = {
-        formType: 'text'
+        formType: null,
+        isTyping: false
     }
 
     changeFormType = (newType) => {
         this.state.formType = newType;
-        console.log(newType ,this.state)
+       
+    }
+
+    inputChangeHnadler = ({target}) => {
+        (target.value !== '') ? this.setState( isTyping: true) : 
+        
     }
 
 
@@ -17,7 +23,7 @@ export default class InputForm extends React.Component{
         return (
             <div className="noteForm">
 
-                <input type='text' placeholder="What's on your mind..."></input>
+                <input type='text' placeholder="What's on your mind..." onChange={this.inputChangeHnadler}></input>
 
                 <div className="btns">
                     <button onClick={this.changeFormType('text')}>Text</button>

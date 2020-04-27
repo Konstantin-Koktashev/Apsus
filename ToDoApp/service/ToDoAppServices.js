@@ -11,6 +11,7 @@ const STORAGE_KEY = 'notes';
 let gNotes = null;
 
 function _createNote(dataType, data) {
+  (dataType === 'video') ? data = 'https://www.youtube.com/embed/' + data : '';
   return {
     id: utilService.makeId(),
     dataType,
@@ -20,7 +21,8 @@ function _createNote(dataType, data) {
 
 const gDefaultNotes = [
   _createNote('text', 'ThisIsBody'),
-  _createNote('image', 'https://...'),
+  _createNote('image', 'https://images.befunky.com/wp/wp-2014-08-milky-way-1023340_1280.jpg?auto=format&fm=jpg&q=75&w=1184&ixlib=js-1.4.1'),
+  _createNote('video', 'https://www.youtube.com/embed/HuS5NuXRb5Y')
 ];
 
 function _creatNotes() {
