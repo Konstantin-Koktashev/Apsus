@@ -1,4 +1,4 @@
-import { StorageServices } from "./storageService.js";
+import { StorageServices } from "../services/storageService.js";
 
 const gDefaultEmails = [
   _creatEmail('Wasup', 'ThisIsBody'),
@@ -15,7 +15,10 @@ export const EmailServices = {
   getEmailById,
 };
 
-function query() {}
+function query(filerBy) {
+  var emails=gEmails
+  return Pro
+}
 
 function _creatEmails() {
   gEmails = StorageServices.load(STORAGE_KEY, gDefaultEmails);
@@ -38,4 +41,7 @@ function remove(emailId) {
 }
 
 function save(emailId) {}
-s
+
+function getEmailById(id){
+  return gEmails.find(email=>email.id===id)
+}
