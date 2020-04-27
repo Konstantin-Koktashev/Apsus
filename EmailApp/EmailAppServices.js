@@ -12,6 +12,7 @@ export const EmailServices = {
   remove,
   getEmailById,
   getShortTxt,
+  toggleEmailImportance
 };
 
 function query(filerBy) {
@@ -38,8 +39,8 @@ function _creatEmail(
   sender = "Kosta",
   subject = "Email Subject",
   body = "EmailBody",
-  isRead = false,
-  isImportant = false,
+  isRead = true,
+  isImportant = true,
   SentAt
 ) {
   return {
@@ -60,6 +61,7 @@ function remove(emailId) {
   return Promise.resolve();
 }
 
+
 function save(emailId) {}
 
 function getEmailById(id) {
@@ -69,4 +71,9 @@ function getEmailById(id) {
 
 function getShortTxt(str) {
   return str.substr(0, 80);
+}
+
+async function toggleEmailImportance(id){
+  let email= await getEmailById(id)
+  email.isImportant=!email.isImportant
 }
