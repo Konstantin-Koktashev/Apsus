@@ -6,6 +6,7 @@ import { EmailApp } from './EmailApp/EmailApp.jsx';
 import { ToDoApp } from './ToDoApp/ToDoApp.jsx';
 import { BookApp } from './pages/BookApp.jsx';
 import { NavLinks } from './cmps/NavLinks.jsx';
+import { Header } from './cmps/header.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch, NavLink } = ReactRouterDOM;
 // const History = History.createBrowserHistory();
@@ -31,19 +32,20 @@ export class App extends React.Component {
       {
         id: utilService.makeId(),
         url: "/signup",
-        name: 'SignUp',
+        name: 'SignUp'
       },
       {
         id: utilService.makeId(),
         url: "/login",
-        name: 'Login',
+        name: 'Login'
       },
     ];
 
     return (
       // const {links,navClass,openClass,closeClass}=this.props
       <Router>
-      <NavLinks links={links} navClass='' openClass='' closeClass=''></NavLinks>
+      {/* <NavLinks links={links} navClass='' openClass='' closeClass=''></NavLinks> */}
+      <Header></Header>
         {/* <NavBar></NavBar> */}
         <Switch>
           <div className="wrapper">
