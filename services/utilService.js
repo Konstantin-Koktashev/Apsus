@@ -1,4 +1,4 @@
-function makeId(length=3) {
+ export function makeId(length=3) {
     var text = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 

@@ -13,7 +13,7 @@ export default class InputForm extends React.Component{
     }
 
     inputChangeHnadler = ({target}) => {
-        (target.value !== '') ? this.setState( isTyping: true) : 
+        // (target.value !== '') ? this.setState( isTyping: true) : 
         
     }
 
