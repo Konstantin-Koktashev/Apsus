@@ -261,32 +261,113 @@ h3 {
   grid-row: span 2;
 }
 
+
+/* Hamburger */
+
+.hamburger {
+  z-index: 10;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hamburger  .bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 6px;
+  background-color: #333;
+  margin: 5px auto;
+  transition: 0.4s;
+  
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+  background-color:  rgb(221, 33, 130)
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+  background-color:  rgb(221, 33, 130)
+}
+/* Side Bar */
+
+
+.sideBar {
+  width: 40%;
+  background-color: #eee;
+  height: 100%;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  border-right: rgb(255, 0, 131) solid 2px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.sideBarHide {
+  width: 40%;
+  background-color: #eee;
+  height: 100%;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  border-right: rgb(255, 0, 131) solid 2px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+
+  transform: translateX(-100%);
+}
+
+.addNoteBtn {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: rgb(255, 0, 131);
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 60px;
+  margin-left: 70%;
+}
+
+
 .toDoPage h1 {
   font-size: 2rem;
   padding: 1.5rem 0;
   text-align: center;
 }
 
-.searchNotesContainer {
-  width: 400px;
-  border: rgb(255, 0, 131) solid 1px;
-  border-radius: 15px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
+/* Adding Note Form */
 
 .insertNoteContainer {
   width: 90vw;
+  height: 300px;
   border: rgb(255, 0, 131) solid 1px;
   border-radius: 15px;
   margin: 0 auto;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .noteForm {
   display: flex;
   justify-content: space-between;
 }
+
 
 .noteForm input {
   height: 1.7rem;
@@ -302,6 +383,13 @@ h3 {
 
 .noteForm .currType {
   color: blue;
+  border-right: blue solid 1px;
+}
+
+.notePreview  {
+  height: 80%;
+  width: 100%;
+  background-color: lightgreen;
 }
 
 .pinnedNotesContainer, .gallery {
@@ -324,7 +412,6 @@ h3 {
   border-radius: 15px;
 }
 
-<<<<<<< HEAD
 .gallery div .previewContent {
   width: 100%;
   height: 100%;
@@ -337,7 +424,8 @@ h3 {
   height: 90%;
   margin-top: 1rem;
 }
-=======
+
+/* Email */
 
 
 .email-wrapper{
@@ -402,4 +490,3 @@ h3 {
   padding-top: 0.4em;
 }
 
->>>>>>> ca5ff295d4a651817e9a9ac418042aef7e2062b7

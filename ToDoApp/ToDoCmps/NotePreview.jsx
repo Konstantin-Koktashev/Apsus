@@ -1,7 +1,6 @@
 export default function NotePreview(props) {
   const { note } = props;
   let DynamicCmp = null;
-    console.log(note)
     DynamicCmp = (dataType, data) => {
         switch (dataType) {
             case 'text':
