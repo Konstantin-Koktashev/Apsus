@@ -1,13 +1,32 @@
 import InputForm from '../ToDoApp/ToDoCmps/InputForm.jsx';
 import PinnedNotes from '../ToDoApp/ToDoCmps/PinnedNotes.jsx';
 import Gallery from '../ToDoApp/ToDoCmps/Gallery.jsx';
+import ToDoAppServices from "./service/ToDoAppServices.js";
 
 export class ToDoApp extends React.Component{
     state={
-        content: 'galary'
+        content: 'galary',
+        notes: []
     }
-    componentDidMount(){}
+    componentDidMount(){
+        this.loadNotes();
+        
+    }
+
+    loadNotes() {
+        
+        ToDoAppServices.query()
+        .then(notes => {
+            this.setState({ notes })
+        })
+      }
+
+    
+
     render(){
+
+        const {notes} = this.state;
+    
         return(
             <div className="toDoPage">
 
@@ -30,13 +49,11 @@ export class ToDoApp extends React.Component{
                 
             </div>
 
-            <div className="contentToggler">
-            <button onClick={() => {}}></button>
-            </div>
 
             <main className="mainContent">
             {/* <PinnedNotes></PinnedNotes> */}
-            <Gallery></Gallery>
+            { notes && 
+                <Gallery notes={notes}></Gallery>}
             </main>
 
             </div>

@@ -297,15 +297,16 @@ h3 {
   display: flex;
   width: 50%;
   justify-content: space-around;
+  cursor: pointer;
 }
 
-.noteForm .btns {
-  cursor: pointer;
+.noteForm .currType {
+  color: blue;
 }
 
 .pinnedNotesContainer, .gallery {
   width: 90vw;
-  height: 100vh;
+  height: auto;
   background-color: #eee;
   margin: 2rem auto;
 
@@ -316,8 +317,8 @@ h3 {
 }
 
 .pinnedNotesContainer div, .gallery div {
-  width: 80%;
-  height: 80%;
+  width: 200px;
+  height: 200px;
   margin: auto;
   border: rgb(255, 0, 131) solid 1px;
   border-radius: 15px;

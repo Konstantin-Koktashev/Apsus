@@ -6,20 +6,25 @@ export default class InputForm extends React.Component{
         formType: 'text'
     }
 
+    changeFormType = (newType) => {
+        this.state.formType = newType;
+        console.log(newType ,this.state)
+    }
+
 
     render(){
 
         return (
             <div className="noteForm">
 
-                <input type={this.state.formType} placeholder="What's on your mind..."></input>
+                <input type='text' placeholder="What's on your mind..."></input>
 
                 <div className="btns">
-                    <button>Text</button>
-                    <button>Image</button>
-                    <button>Video</button>
-                    <button>Audio</button>
-                    <button>List</button>
+                    <button onClick={this.changeFormType('text')}>Text</button>
+                    <button onClick={this.changeFormType('image')}>Image</button>
+                    <button onClick={this.changeFormType('video')}>Video</button>
+                    <button onClick={this.changeFormType('audio')}>Audio</button>
+                    <button onClick={this.changeFormType('list')}>List</button>
                 </div>
             </div>
         )

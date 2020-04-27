@@ -1,26 +1,11 @@
-export default class InputForm extends React.Component{
+import NotePreview from './NotePreview.jsx'
 
-    state = {
-        
-    }
-
-
-    render(){
-
+export default function Gallery(props) {
+    
         return (
             <div className="gallery">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+             { props.notes.map(note => <NotePreview  key={ note.id } note={ note } />) }
             </div>
         )
-    }
 
 }

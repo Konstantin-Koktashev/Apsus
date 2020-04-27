@@ -19,7 +19,7 @@ export class App extends React.Component {
             <Route exact  path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route exact component={Overview} path="/app" />
-            <Route exact component={EmailApp} path="/email" />
+            {/* <Route exact component={EmailAppgit} path="/email" /> */}
             <Route exact component={ToDoApp} path="/todo" />
             <Route exact component={BookApp} path="/book" />
             {/* <Route component={About} path="/faq" />
