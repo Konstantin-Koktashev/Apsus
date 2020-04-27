@@ -1,0 +1,325 @@
+/* Fonts */
+
+@font-face {
+  font-family: lato;
+  src: url(../fonts/Lato-Bold.ttf);
+}
+@font-face {
+  font-family: meri;
+  src: url(../fonts/Merriweather-Regular.ttf);
+}
+
+body {
+  background-color: rgb(248, 248, 255);
+}
+
+/*Main Container*/
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 7fr;
+  width: 100vw;
+  height: 85vh;
+  gap: 1em;
+}
+
+/*Grid Areas*/
+header {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1;
+  padding: 1em;
+  height: 15vh;
+  /* padding-left: 1.5em; */
+}
+
+main {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+footer {
+  /* grid-column: 1/-1; */
+  display: none;
+}
+
+/*NavBar*/
+header h3 {
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2em;
+  margin-bottom: 0;
+}
+
+header h3 span {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  
+}
+header .hambuger-menue {
+  display: inline;
+  padding: 0.3em;
+}
+.logon-hamburger-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.logo-container {
+  align-self: center;
+  justify-self: center;
+}
+.logo-container img {
+  width: 100%;
+}
+nav {
+  display: flex;
+  height: 100vh;
+  background: rgb(49, 49, 49);
+  position: fixed;
+  left: 0px;
+  top: 0;
+  width: fit-content;
+  transition: transform 0.3s;
+  transform: translateX(-100%);
+  width: 50vw;
+}
+nav .nav-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.5em;
+  position: relative;
+  font-family: lato;
+}
+nav .nav-links a {
+  margin-block-end: 1.5em;
+  color: rgb(255, 255, 255);
+}
+
+.close-nav-btn {
+  position: absolute;
+  top: 0;
+  left: 87%;
+  padding: 0.4em;
+}
+
+.show-menue {
+  transform: translateX(0%);
+}
+
+/* Home Page */
+
+main h1 {
+  font-size: 2rem;
+  margin-bottom: 1em;
+  margin-top: 0.3em;
+  font-family: meri;
+  letter-spacing: 2px;
+  
+}
+main h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+  font-family: lato;
+}
+main h6 {
+  font-family: lato;
+}
+
+.call-to-action-video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.call-to-action-video h6 {
+  padding: 0.2em;
+}
+.call-to-action-btn,
+.secondary-call-to-action-btn {
+  line-height: 1.3;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  white-space: nowrap;
+  will-change: transform, background-color, box-shadow, color, border;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 0, 131);
+  box-shadow: rgba(255, 0, 131, 0.5) 0px 10px 40px -10px;
+  outline: none;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: initial;
+  transition: all 0.3s ease 0s, transform 0.5s ease 0s;
+  margin-bottom: 1.2em;
+  font-family: lato;
+}
+.secondary-call-to-action-btn {
+  margin: 0;
+  width: 30%;
+  border-radius: 99999;
+  /* visibility: hidden; */
+}
+
+.hero-img {
+  flex-grow: 1;
+  z-index: -1;
+}
+.hero-img img {
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+/* OverView Page */
+.overview {
+  grid-row: span 2;
+  grid-column: span 4;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 10fr;
+  text-align: center;
+  gap: 1em;
+}
+.overview h1 {
+  grid-column: 1/-1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  font-family: meri;
+  font-size: 2rem;
+}
+.overview section {
+  display: flex;
+  flex-direction: column;
+  font-family: lato;
+  background-color: rgb(211, 211, 211);
+}
+.overview .testing {
+  background-color: #fff;
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+  min-height: 20%;
+  margin: 0.3em;
+  border-radius: 0.3rem;
+}
+
+/* About Page */
+
+.about-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5em;
+  grid-column: span 4;
+  grid-row: span 2;
+}
+.about-wrapper h2,
+h3 {
+  margin-bottom: 1em;
+  padding: 0 0.2em;
+  font-size: 2.2rem;
+  font-family: meri;
+}
+.about-wrapper h3 {
+  font-size: 1.6rem;
+}
+
+.about-wrapper p {
+  margin-bottom: 1.7em;
+  line-height: 1.5;
+  font-family: lato;
+}
+
+.show {
+  visibility: visible;
+}
+
+/* To DO App*/
+
+.toDoPage {
+  margin: 0;
+  padding: 0;
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.toDoPage h1 {
+  font-size: 2rem;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.searchNotesContainer {
+  width: 400px;
+  border: rgb(255, 0, 131) solid 1px;
+  border-radius: 15px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.insertNoteContainer {
+  width: 90vw;
+  border: rgb(255, 0, 131) solid 1px;
+  border-radius: 15px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.noteForm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.noteForm input {
+  height: 1.7rem;
+  width: 50%;
+}
+
+.noteForm .btns {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.noteForm .currType {
+  color: blue;
+}
+
+.pinnedNotesContainer, .gallery {
+  width: 90vw;
+  height: auto;
+  background-color: #eee;
+  margin: 2rem auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.pinnedNotesContainer div, .gallery div {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  border: rgb(255, 0, 131) solid 1px;
+  border-radius: 15px;
+}
