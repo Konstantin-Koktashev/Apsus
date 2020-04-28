@@ -1,9 +1,9 @@
 import NewNotePreview from './NewNotePreview.jsx'
-
+import ToDoAppServices from '../service/ToDoAppServices.js';
 export default class InputForm extends React.Component{
 
     state = {
-        formType: null,
+        formType: 'text',
         isTyping: false,
         newNote: null
     }
@@ -11,35 +11,49 @@ export default class InputForm extends React.Component{
     
     
     componentDidUpdate(prevProps, prevState) {
-        if(prevState.newNote !== this.state.newNote) {
-            // console.log(prevState, this.state)
-        }
+     
     }
 
     changeFormType = (newType) => {
-        this.state.formType = newType;
+        
        
     }
 
     inputChangeHnadler = ({target}) => {
         
         (target.value !== '') ? this.setState({isTyping: true})  : this.setState({isTyping: false});
-        this.state.newNote = target.value
-        console.log(this.state)
+        this.state.newNote = {
+            dataType: this.state.formType,
+            data: target.value
+        } 
+        
     }
-
+ 
+    onSaveNote = (ev) => {
+        ev.preventDefault()
+        ToDoAppServices.save(this.state.newNote)
+        .then(savedNote => {
+            // console.log('note succesfuly saved:', savednote);
+            this.props.history.push('/note')
+        })
+        .catch(err => {
+            // console.log('OOPs', err);
+            
+        })
+    }
+    
 
 
     render(){
         const { newNote } = this.state
-        console.log(newNote)
+       
         return (
 
             <div className="insertNoteContainer">
 
             <div className="noteForm">
                 
-                <input type='text' placeholder="What's on your mind..." onChange={this.inputChangeHnadler}></input>
+                <input type='text' placeholder="What's on your mind..." onChange={this.inputChangeHnadler} maxLength="180"></input>
 
                 <div className="btns">
                     <button onClick={this.changeFormType('text')}>Text</button>
@@ -52,9 +66,10 @@ export default class InputForm extends React.Component{
 
             <div className="notePreview">
                
-                    <NewNotePreview data={newNote}></NewNotePreview>
+               {newNote &&  <NewNotePreview data={newNote.data}></NewNotePreview>}    
                 </div>
 
+                <button className="addNoteBtn" onClick={this.onSaveNote}>+</button>
             </div>
         )
     }

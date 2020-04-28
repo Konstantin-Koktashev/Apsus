@@ -37,11 +37,11 @@ function save(noteToSave) {
     const noteIdx = _getIdxById(noteToSave.id);
     gNotes[noteIdx] = noteToSave;
   } else {
-    savedNote = _createNote();
+    savedNote = _createNote(noteToSave.dataType, noteToSave.data);
     gNotes.push(savedNote);
   }
-  storageService.store(STORAGE_KEY, gNotes);
-
+  StorageServices.store(STORAGE_KEY, gNotes);
+  console.log(gNotes)
   return Promise.resolve(savedNote);
 }
 

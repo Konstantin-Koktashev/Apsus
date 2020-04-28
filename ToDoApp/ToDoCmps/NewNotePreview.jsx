@@ -5,4 +5,4 @@ export default function NewNotePreview(props) {
             {props.data}
         </div>
     )
-}
+} 

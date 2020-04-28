@@ -361,6 +361,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  position: relative;
 }
 
 .noteForm {
@@ -392,6 +393,25 @@ h3 {
   background-color: lightgreen;
 }
 
+
+.newNotePreview {
+  width: 70%;
+  margin: 1rem auto;
+  font-size: 1.5rem;
+  overflow-wrap: break-word;
+  
+}
+
+.insertNoteContainer .addNoteBtn {
+ position: absolute;
+ background: none;
+ border: rgba(51, 51, 51, 0.486) solid 1px;
+ bottom: 25px;
+ right: 25px;
+
+}
+
+
 .pinnedNotesContainer, .gallery {
   width: 90vw;
   height: auto;
@@ -399,7 +419,7 @@ h3 {
   margin: 2rem auto;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 5px;
   grid-row-gap: 5px;
 }
