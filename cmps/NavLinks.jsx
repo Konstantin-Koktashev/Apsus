@@ -51,4 +51,3 @@ export class NavLinks extends React.Component {
 }
 
 
-// nav class,open class, close class,URL,linkname

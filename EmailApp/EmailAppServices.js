@@ -14,9 +14,8 @@ export const EmailServices = {
   getShortTxt,
   toggleEmailImportance,
   setEmailToRead,
-  getStarredEmails,
-  getDraftEmails,
-  getSentEmails
+  getEmailByCatagory,
+  markEmailSent
 };
 
 function query(filerBy) {
@@ -73,15 +72,29 @@ function remove(emailId) {
 }
 
 
-function save(emailToSave) {
+function save(emailToSave,isRead=false,isImportant=false,isSent=false,isDraft=false) {
   var savedEmail = emailToSave;
   if (emailToSave.id) {
       const emailIdx = _getIdxById(emailToSave.id)
       gEmails[emailIdx] = emailToSave;
   } else {
     const{SendTo,subject,body}=emailToSave
-    savedEmail = _creatEmail(undefined,SendTo,subject,body)
-      gEmails.push(savedEmail)
+    if(isRead){
+      savedEmail = _creatEmail(undefined,SendTo,subject,body,true)
+      gEmails.unshift(savedEmail)
+    }
+    if(isImportant){
+      savedEmail = _creatEmail(undefined,SendTo,subject,body,undefined,true)
+      gEmails.unshift(savedEmail)
+    }
+    if(isSent){
+      savedEmail = _creatEmail(undefined,SendTo,subject,body,undefined,undefined,true)
+      gEmails.unshift(savedEmail)
+    }
+    if(isDraft){
+      savedEmail = _creatEmail(undefined,SendTo,subject,body,undefined,undefined,undefined,true)
+      gEmails.unshift(savedEmail)
+    }
   }
   StorageServices.store(STORAGE_KEY, gEmails)
   return Promise.resolve(savedEmail||emailToSave)
@@ -112,12 +125,13 @@ function _getIdxById(emailId) {
   return gEmails.findIndex(email => email.id === emailId)
 }
 
-async function getStarredEmails(){
-  return gEmails.filer(email=>email.isImportant)
+async function getEmailByCatagory(catagory){
+  if(catagory==='inbox') return gEmails
+  if(catagory==='sent')return gEmails.filter(email=>email.isSent)
+  if(catagory==='draft')return gEmails.filter(email=>email.isDraft)
+  if(catagory==='starred')return gEmails.filter(email=>email.isImportant)
 }
-async function getSentEmails(){
-  return gEmails.filer(email=>email.isSent)
-}
-async function getDraftEmails(){
-  return gEmails.filer(email=>email.isDraft)
+
+ function markEmailSent(emailToMark){
+  emailToMark.isSent=true
 }

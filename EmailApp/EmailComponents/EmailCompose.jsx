@@ -24,10 +24,9 @@ export class EmailCompose extends React.Component {
   sendEmail = async (ev) => {
     ev.preventDefault();
     const { email } = this.state;
-    console.log("sendEmail -> email", email)
-    await EmailServices.save(email);
-    this.setState({email:{ sendTo: '', subject: '', body: '' }});
-    history.goBack()
+    await EmailServices.save(email,undefined,undefined,true);
+    this.setState({ email: { sendTo: '', subject: '', body: '' } });
+    history.goBack();
   };
   render() {
     const { email } = this.state;

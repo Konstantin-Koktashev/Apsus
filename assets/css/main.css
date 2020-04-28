@@ -540,6 +540,18 @@ h3 {
 
 
 /* Email Compose */
+.email-list{
+  flex-grow: 1;
+  /* position: relative; */
+}
+.compose-email-btn{
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 80%;
+  left:50%;
+  z-index: 999;
+}
 
 .email-compose-form{
   display: flex;
