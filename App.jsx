@@ -9,6 +9,8 @@ import { NavLinks } from './cmps/NavLinks.jsx';
 import { Header } from './cmps/header.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch, NavLink } = ReactRouterDOM;
+const history = History.createBrowserHistory();
+
 // const History = History.createBrowserHistory();
 
 export class App extends React.Component {
