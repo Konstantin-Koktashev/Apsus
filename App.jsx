@@ -5,27 +5,58 @@ import { Overview } from './pages/Overview.jsx';
 import { EmailApp } from './EmailApp/EmailApp.jsx';
 import { ToDoApp } from './ToDoApp/ToDoApp.jsx';
 import { BookApp } from './pages/BookApp.jsx';
+import { NavLinks } from './cmps/NavLinks.jsx';
+import { Header } from './cmps/header.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch, NavLink } = ReactRouterDOM;
+const history = History.createBrowserHistory();
+
 // const History = History.createBrowserHistory();
 
 export class App extends React.Component {
   render() {
+    const links = [
+      {
+        id: utilService.makeId(),
+        url: '/',
+        name: 'Home',
+      },
+      {
+        id: utilService.makeId(),
+        url: '/faq',
+        name: 'FAQ',
+      },
+      {
+        id: utilService.makeId(),
+        url: "/about",
+        name: 'About',
+      },
+      {
+        id: utilService.makeId(),
+        url: "/signup",
+        name: 'SignUp'
+      },
+      {
+        id: utilService.makeId(),
+        url: "/login",
+        name: 'Login'
+      },
+    ];
+
     return (
+      // const {links,navClass,openClass,closeClass}=this.props
       <Router>
-            <NavBar  location={this.props.location}></NavBar>
+      {/* <NavLinks links={links} navClass='' openClass='' closeClass=''></NavLinks> */}
+        <Header></Header>
+        {/* <NavBar></NavBar> */}
         <Switch>
           <div className="wrapper">
-            <Route exact  path="/" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route exact component={Overview} path="/app" />
-            <Route exact component={EmailApp} path="/email" />
+            <Route component={EmailApp} path="/email" />
             <Route exact component={ToDoApp} path="/todo" />
             <Route exact component={BookApp} path="/book" />
-            {/* <Route component={About} path="/faq" />
-              <Route component={About} path="/signup" />
-              <Route component={About} path="/login" /> */}
-            {/* <Home></Home> */}
             <footer>Footer</footer>
           </div>
         </Switch>

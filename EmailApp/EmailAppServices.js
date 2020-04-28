@@ -1,7 +1,7 @@
 import { StorageServices } from "../services/storageService.js";
 import { makeId } from "../services/utilService.js";
 
-const gDefaultEmails = [_creatEmail(), _creatEmail()];
+const gDefaultEmails = [_creatEmail('Yosi'), _creatEmail()];
 var gEmails = null;
 const STORAGE_KEY = "emails";
 _creatEmails();
@@ -12,18 +12,20 @@ export const EmailServices = {
   remove,
   getEmailById,
   getShortTxt,
+  toggleEmailImportance
 };
 
 function query(filerBy) {
+  filerBy=filerBy.toLowerCase()
   
   var emails = gEmails;
   if (filerBy) {
     emails = gEmails.filter((email) => {
       return (
-        email.sender.includes(filerBy) ||
-        email.subject.includes(filerBy) ||
-        email.body.includes(filerBy) ||
-        email.id.includes(filerBy)
+        email.sender.toLowerCase().includes(filerBy) ||
+        email.subject.toLowerCase().includes(filerBy) ||
+        email.body.toLowerCase().includes(filerBy) ||
+        email.id.toLowerCase().includes(filerBy)
       );
     });
   }
@@ -38,8 +40,8 @@ function _creatEmail(
   sender = "Kosta",
   subject = "Email Subject",
   body = "EmailBody",
-  isRead = false,
-  isImportant = false,
+  isRead = true,
+  isImportant = true,
   SentAt
 ) {
   return {
@@ -60,7 +62,19 @@ function remove(emailId) {
   return Promise.resolve();
 }
 
-function save(emailId) {}
+
+function save(emailToSave) {
+  var savedEmail = emailToSave;
+  if (emailToSave.id) {
+      const emailIdx = _getIdxById(emailToSave.id)
+      gEmails[emailIdx] = emailToSave;
+  } else {
+    savedEmail = _creatEmail()
+      gEmails.push(savedEmail)
+  }
+  StorageServices.store(STORAGE_KEY, gEmails)
+  return Promise.resolve(savedEmail||emailToSave)
+}
 
 function getEmailById(id) {
   let email = gEmails.find((email) => email.id === id);
@@ -69,4 +83,15 @@ function getEmailById(id) {
 
 function getShortTxt(str) {
   return str.substr(0, 80);
+}
+
+async function toggleEmailImportance(id){
+  let email= await getEmailById(id)
+  email.isImportant=!email.isImportant
+  save(email)
+}
+
+
+function _getIdxById(emailId) {
+  return gEmails.findIndex(email => email.id === emailId)
 }

@@ -38,7 +38,6 @@ export class NavBar extends React.Component {
           </button>
           </Link>
     <nav className={classToSelect}>
-
       <section className="nav-links">
         <NavLink exact to="/">
           Home
