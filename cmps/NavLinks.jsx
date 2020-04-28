@@ -31,7 +31,7 @@ export class NavLinks extends React.Component {
         let headerBtnClass =(this.state.isMainPage)? '': 'show'
         const {links,navClass,openClass,closeClass}=this.props
         return (
-          <section className="nav-bar-check">
+          <section className="nav-bar">
         <div className={`logon-hamburger-wrapper ${openClass}`}>
           <button className="hambuger-menue" onClick={() =>this.handleClick(this.state.hamburgerMenue.id)}>
               	&#x2630;

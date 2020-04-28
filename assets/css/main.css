@@ -350,6 +350,31 @@ h3 {
 }
 
 
+/* Email App */
+.email-navbar{
+  height: 100vh;
+}
+.filter-search-bar{
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  position: relative;
+}
+.filter-search-bar button{
+  /* justify-self: flex-end; */
+  position: absolute;
+  left: 11%;
+ bottom: 5%;
+}
+.filter-search-bar form{
+  flex: 1;
+  text-align: center;
+}
+.filter-search-bar input{
+  text-align: center;
+}
+
+
 /* Email Preview */
 
 .email-wrapper article{
@@ -405,4 +430,6 @@ h3 {
   justify-content: center;
   padding-top: 0.4em;
 }
+
+
 
