@@ -3,6 +3,7 @@ import utilService from '../../services/utilService.js';
 export default {
   query,
   save,
+  setPlaceHolder,
   // remove,
   // getTodoById,
 };
@@ -10,17 +11,17 @@ export default {
 const STORAGE_KEY = 'notes';
 let gNotes = null;
 
-function _createNote(dataType, data) {
-  (dataType === 'video') ? data = 'https://www.youtube.com/embed/' + data : '';
+function _createNote(dataType, data, bgc) {
   return {
     id: utilService.makeId(),
     dataType,
     data,
+    bgc
   };
 }
 
 const gDefaultNotes = [
-  _createNote('text', 'ThisIsBody'),
+  _createNote('text', 'ThisIsBody', 'lightgreen'),
   _createNote('image', 'https://images.befunky.com/wp/wp-2014-08-milky-way-1023340_1280.jpg?auto=format&fm=jpg&q=75&w=1184&ixlib=js-1.4.1'),
   _createNote('video', 'https://www.youtube.com/embed/HuS5NuXRb5Y')
 ];
@@ -37,7 +38,7 @@ function save(noteToSave) {
     const noteIdx = _getIdxById(noteToSave.id);
     gNotes[noteIdx] = noteToSave;
   } else {
-    savedNote = _createNote(noteToSave.dataType, noteToSave.data);
+    savedNote = _createNote(noteToSave.dataType, noteToSave.data, noteToSave.bgc);
     gNotes.push(savedNote);
   }
   StorageServices.store(STORAGE_KEY, gNotes);
@@ -46,7 +47,37 @@ function save(noteToSave) {
 }
 
 function query(filterBy) {
-  let notes = gNotes;
-  !gNotes ? (notes = StorageServices.load(STORAGE_KEY)) : (notes = gNotes);
+  filterBy = filterBy.toLowerCase()
+  var notes = gNotes;
+  if (filterBy) {
+    notes = gNotes.filter((note => {
+      return (
+        note.data.toLowerCase().includes(filterBy) ||
+        note.dataType.toLowerCase().includes(filterBy)
+        
+        )
+    }))
+  } 
+
+  !gNotes ? (notes = StorageServices.load(STORAGE_KEY)) : notes ;
   return Promise.resolve(notes);
 }
+
+
+function setPlaceHolder(type) {
+  switch (type) {
+    case 'text':
+      return "What's on your mind..."
+    case 'image':
+      return "Paste url link address..."
+    case 'video':
+      return "www.youtube.com/watch?v=[Insert only this part...]"
+    case 'audio':
+      return "Record somthing"
+    case 'list':
+      return "Start a ToDo list!"
+  
+  }
+}
+  
+

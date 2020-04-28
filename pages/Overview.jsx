@@ -17,8 +17,8 @@ export class Overview extends React.Component{
             </section>
             <section className="todo-app-board">
             <div className="board-header">
-                    <h4>Todo App</h4>
-                    <NavLink exact to="/todo">Todo App</NavLink>
+                    <h4>Note App</h4>
+                    <NavLink exact to="/note">Note App</NavLink>
 
              
                 </div>

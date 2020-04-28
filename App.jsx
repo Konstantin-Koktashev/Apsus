@@ -3,7 +3,7 @@ import { Home } from './pages/Home.jsx';
 import { About } from './pages/about.jsx';
 import { Overview } from './pages/Overview.jsx';
 import { EmailApp } from './EmailApp/EmailApp.jsx';
-import { ToDoApp } from './ToDoApp/ToDoApp.jsx';
+import { NoteApp } from './NoteApp/NoteApp.jsx';
 import { BookApp } from './pages/BookApp.jsx';
 import { NavLinks } from './cmps/NavLinks.jsx';
 import { Header } from './cmps/header.jsx';
@@ -55,7 +55,7 @@ export class App extends React.Component {
             <Route path="/about" component={About} />
             <Route exact component={Overview} path="/app" />
             <Route component={EmailApp} path="/email" />
-            <Route exact component={ToDoApp} path="/todo" />
+            <Route component={NoteApp} path="/note" />
             <Route exact component={BookApp} path="/book" />
             <footer>Footer</footer>
           </div>

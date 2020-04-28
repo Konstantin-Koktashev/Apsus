@@ -252,13 +252,37 @@ h3 {
   visibility: visible;
 }
 
-/* To DO App*/
+/* Note App*/
 
-.toDoPage {
+.NotePage {
   margin: 0;
   padding: 0;
   grid-column: span 4;
   grid-row: span 2;
+}
+
+
+.NoteSearchBar {
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+  position: relative;
+}
+.NoteSearchBar form {
+ width: 80%;
+ margin: 0 auto;
+ 
+}
+
+.NoteSearchBar form input {
+  width: 100%;
+ text-align: center;
+}
+
+.NoteSearchBar .nav-bar  {
+  position: absolute;
+  left: 11%;
+  cursor: pointer;
 }
 
 
@@ -343,7 +367,7 @@ h3 {
 }
 
 
-.toDoPage h1 {
+.NotePage h1 {
   font-size: 2rem;
   padding: 1.5rem 0;
   text-align: center;
@@ -353,8 +377,9 @@ h3 {
 
 .insertNoteContainer {
   width: 90vw;
-  height: 300px;
-  border: rgb(255, 0, 131) solid 1px;
+  min-height: 300px;
+  
+  border: rgba(122, 122, 122, 0.644) solid 1px;
   border-radius: 15px;
   margin: 0 auto;
   padding: 1rem;
@@ -367,6 +392,7 @@ h3 {
 .noteForm {
   display: flex;
   justify-content: space-between;
+  padding: 1rem 0;
 }
 
 
@@ -382,16 +408,54 @@ h3 {
   cursor: pointer;
 }
 
-.noteForm .currType {
-  color: blue;
-  border-right: blue solid 1px;
-}
+
 
 .notePreview  {
-  height: 80%;
+  min-height: 200px;
   width: 100%;
+  position: relative;;
+}
+
+.notePreview .changeColor {
+  height: 100%;
+  width: 40px;
+  background-color: rgba(117, 116, 116, 0.616);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.notePreview .changeColor button {
+  height: 15%;
+  width: 70%;
+  border-radius: 50%;
+  border: rgba(51, 51, 51, 0.712) solid 1px;
+  cursor: pointer;
+}
+
+/* Color for edit */
+
+.lightGreen {
   background-color: lightgreen;
 }
+.lightSalmon {
+  background-color: lightsalmon;
+}
+.lightBlue {
+  background-color: lightBlue;
+}
+.lightYellow {
+  background-color: lightyellow;
+}
+.lightPink {
+  background-color: lightpink;
+}
+.lightSlategray {
+  background-color: lightslategray;
+}
+
 
 
 .newNotePreview {
@@ -401,6 +465,12 @@ h3 {
   overflow-wrap: break-word;
   
 }
+
+.newNotePreview img {
+  max-width: 100%;
+}
+
+
 
 .insertNoteContainer .addNoteBtn {
  position: absolute;
@@ -419,7 +489,7 @@ h3 {
   margin: 2rem auto;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 5px;
   grid-row-gap: 5px;
 }
@@ -428,7 +498,7 @@ h3 {
   width: 200px;
   height: 200px;
   margin: auto;
-  border: rgb(255, 0, 131) solid 1px;
+  border: rgba(170, 168, 169, 0.712) solid 1px;
   border-radius: 15px;
 }
 
@@ -540,3 +610,23 @@ h3 {
 
 
 
+
+
+/* Note Media Query */
+
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
