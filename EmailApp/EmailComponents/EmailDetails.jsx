@@ -1,28 +1,35 @@
 import { EmailServices } from '../EmailAppServices.js';
+import { GoBack } from '../../cmps/GoBackBtn.jsx';
 const history = History.createBrowserHistory();
 
 export class EmailDetails extends React.Component {
-  componentDidMount() {
+  state={
+    email:{
+      sender:'',
+      topic:'',
+      body:''
+    }
+  }
+ async componentDidMount() {
     const id = this.props.match.params.emailId;
-    console.log('EmailDetails -> componentDidMount -> id', id);
-    const email = EmailServices.getEmailById(id);
-    
+    const email =await EmailServices.getEmailById(id);
+    this.setState({email:email})  
   }
   render() {
-    // const { email } = this.props;
+    const { email } = this.state;
     return (
       <div>
           <h2>Hello</h2>
-        <section
+        {/* <section
           className="go-back-brn"
-        //   BrowserHistoryonClick={history.goBack()}
-        >
-          button Hello World
-        </section>
-        {/* <section className="email-topic"></section>
+          BrowserHistoryonClick={history.goBack}
+        > */}
+  <GoBack backBtnSecondClass='email-go-back'></GoBack>
+        {/* </section> */}
+        <section className="email-topic"></section>
         <section className="sender-name">{email.sender}</section>
         <section className="email-topic">{email.topic}</section>
-        <section className="email-body">{email.body}</section> */}
+        <section className="email-body">{email.body}</section>
       </div>
     );
   }

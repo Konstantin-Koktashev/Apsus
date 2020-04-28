@@ -12,7 +12,11 @@ export const EmailServices = {
   remove,
   getEmailById,
   getShortTxt,
-  toggleEmailImportance
+  toggleEmailImportance,
+  setEmailToRead,
+  getStarredEmails,
+  getDraftEmails,
+  getSentEmails
 };
 
 function query(filerBy) {
@@ -38,18 +42,24 @@ function _creatEmails() {
 }
 function _creatEmail(
   sender = "Kosta",
+  sendTo ='Coding-Academy',
   subject = "Email Subject",
   body = "EmailBody",
-  isRead = true,
-  isImportant = true,
-  SentAt
+  isRead = false,
+  isImportant = false,
+  isSent=false,
+  isDraft=false
+  
 ) {
   return {
     sender,
+    sendTo,
     subject,
     body,
     isRead,
     isImportant,
+    isSent,
+    isDraft,
     sentAt: Date.now(),
     id: makeId(),
   };
@@ -69,7 +79,8 @@ function save(emailToSave) {
       const emailIdx = _getIdxById(emailToSave.id)
       gEmails[emailIdx] = emailToSave;
   } else {
-    savedEmail = _creatEmail()
+    const{SendTo,subject,body}=emailToSave
+    savedEmail = _creatEmail(undefined,SendTo,subject,body)
       gEmails.push(savedEmail)
   }
   StorageServices.store(STORAGE_KEY, gEmails)
@@ -90,8 +101,23 @@ async function toggleEmailImportance(id){
   email.isImportant=!email.isImportant
   save(email)
 }
+async function setEmailToRead(id){
+  let email= await getEmailById(id)
+  email.isRead=true
+  save(email)
+}
 
 
 function _getIdxById(emailId) {
   return gEmails.findIndex(email => email.id === emailId)
+}
+
+async function getStarredEmails(){
+  return gEmails.filer(email=>email.isImportant)
+}
+async function getSentEmails(){
+  return gEmails.filer(email=>email.isSent)
+}
+async function getDraftEmails(){
+  return gEmails.filer(email=>email.isDraft)
 }

@@ -6,6 +6,7 @@ import { EmailServices } from './EmailAppServices.js';
 import { Filter } from '../cmps/Filter.jsx';
 import { NavLinks } from '../cmps/NavLinks.jsx';
 import utilService from '../services/utilService.js';
+import { EmailInbox } from './EmailInbox.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 const { createBrowserHistory } = History;
@@ -35,18 +36,16 @@ export class EmailApp extends React.Component {
     EmailServices.toggleEmailImportance(emailId);
     this.loadEmails();
   };
+  onReadEmail=(emailId)=>{
+    EmailServices.setEmailToRead(emailId)
+    this.loadEmails();
+  }
+  onChangeCatagory=(catagory)=>{
+    
+  }
   render() {
     const { emails } = this.state;
     const location = this.props.location.pathname;
-    // const emailList =
-    // location === '/email' ? (
-    //   <EmailList
-    //     emails={emails}
-    //     toggleImportance={this.toggleImportance}
-    //   ></EmailList>
-    // ) : (
-    //   ''
-    // );
     const links = [
       { id: utilService.makeId(), url: 'email/inbox', name: 'Inbox' },
       { id: utilService.makeId(), url: 'email/starred', name: 'Starred' },
@@ -69,12 +68,14 @@ export class EmailApp extends React.Component {
             placeHolder="Search By Sender,subject,Id"
           ></Filter>
         </section>
-
-        {/* {emails && <EmailDetails email={emails[0]}></EmailDetails>} */}
         <Switch>
           <Route
             render={(props) => <EmailCompose {...props} />}
             path="/email/compose"
+          />
+          <Route
+            render={(props) => <EmailInbox {...props} />}
+            path="/email/inbox"
           />
           <Route component={EmailDetails} exact path="/email/:emailId" />
           <Route
@@ -84,6 +85,7 @@ export class EmailApp extends React.Component {
                   <EmailList
                     emails={emails}
                     toggleImportance={this.toggleImportance}
+                    onReadEmail={this.onReadEmail}
                   />
                 )
               );
