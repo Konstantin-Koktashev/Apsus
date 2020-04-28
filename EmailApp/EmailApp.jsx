@@ -69,19 +69,26 @@ export class EmailApp extends React.Component {
             placeHolder="Search By Sender,subject,Id"
           ></Filter>
         </section>
-        {emails && (
-          <EmailList
-            emails={emails}
-            toggleImportance={this.toggleImportance}
-          ></EmailList>
-        )}
+
         {/* {emails && <EmailDetails email={emails[0]}></EmailDetails>} */}
         <Switch>
-          <Route component={EmailDetails} exact path="/email/:emailId" />
           <Route
             render={(props) => <EmailCompose {...props} />}
-            exact
             path="/email/compose"
+          />
+          <Route component={EmailDetails} exact path="/email/:emailId" />
+          <Route
+            render={(props) => {
+              return (
+                emails && (
+                  <EmailList
+                    emails={emails}
+                    toggleImportance={this.toggleImportance}
+                  />
+                )
+              );
+            }}
+            path="/email"
           />
         </Switch>
       </div>
