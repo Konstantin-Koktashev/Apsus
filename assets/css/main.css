@@ -203,6 +203,11 @@ main h6 {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  min-width: 600px;
+}
+.all-apps section {
+  background-color: #00b0ff;;
+  margin: 0 1em;
 }
 .all-apps section {
   width: 33%;
@@ -240,11 +245,11 @@ main h6 {
   align-items: center;
   text-align: center;
 }
-.overview-text{
-  flex-grow: 4;
+.important-overview a{
+  flex-grow: 1;
 }
 .overview-icon{
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
 /* About Page */
