@@ -193,11 +193,28 @@ main h6 {
 .overview {
   grid-row: span 2;
   grid-column: span 4;
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: 1fr 10fr; */
+  /* gap: 1em; */
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  gap: 1em;
+}
+.all-apps{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  min-width: 600px;
+}
+.all-apps section {
+  background-color: #00b0ff;;
+  margin: 0 1em;
+}
+.all-apps section {
+  width: 33%;
+  padding: 1em;
 }
 .overview h1 {
   grid-column: 1/-1;
@@ -209,32 +226,47 @@ main h6 {
   font-family: meri;
   font-size: 2rem;
 }
-.overview section {
+.overview-icon{
   display: flex;
   flex-direction: column;
-  font-family: lato;
-  background-color: rgb(211, 211, 211);
+  
 }
-.overview .testing {
+.open-app-btn{
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.important-overview {
   background-color: #fff;
   box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
   min-height: 20%;
   margin: 0.3em;
   border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.important-overview a{
+  flex-grow: 1;
+}
+.overview-icon{
+  /* flex-grow: 1; */
 }
 
-.note-app-board {
+/* .note-app-board {
   display: flex;
   flex-direction: column;
   
-}
+} */
 
 .note-app-board .pinnedNotesContainer {
   grid-template-columns: repeat(1, 1fr);
-  max-width: 300px;
-  height: 70vh;
+  max-width: 100%;
+  
   background: none;
-  overflow-y: scroll;
+  
 }
 
 /* About Page */
@@ -692,6 +724,58 @@ h3 {
   .gallery, .pinnedNotesContainer {
     grid-template-columns: repeat(2, 1fr);
   }
+/* Email Compose */
+.email-list{
+  flex-grow: 1;
+  /* position: relative; */
+}
+.compose-email-btn{
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 80%;
+  left:50%;
+  z-index: 999;
+}
+
+.email-compose-form{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-grow: 1;
+}
+
+.email-compose-form section {
+  margin-bottom: 0.6em;
+  width: 100%;
+}
+.email-compose-form input{
+  width: 100%;
+}
+.email-body{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.email-send-to{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.6em;
+
+}
+
+.email-body{
+  display: flex;
+}
+.email-body input{
+  flex-grow: 1;
+  display:block;
+  border:none;
+  min-width:0;
+  /* overflow-wrap: break-word; */
 }
 
 @media (max-width: 658px) {

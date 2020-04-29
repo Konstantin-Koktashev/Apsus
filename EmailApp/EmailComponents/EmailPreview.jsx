@@ -26,7 +26,7 @@ export function EmailPreview(props) {
         </div>
       </section>
       <section className="email-text-preview">
-                <Link  to={`/email/${email.id}`}>
+                <Link  to={`/email/${email.id}`} onClick={()=>props.onReadEmail(email.id)}>
         <h4>{email.sender}</h4>
         <h6>{email.subject}</h6>
         <p>{EmailServices.getShortTxt(email.body)}</p>

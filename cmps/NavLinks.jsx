@@ -29,7 +29,7 @@ export class NavLinks extends React.Component {
       
         let classToSelect = (this.state.isSideMenueShown)? 'show-menue':''
         let headerBtnClass =(this.state.isMainPage)? '': 'show'
-        const {links,navClass,openClass,closeClass}=this.props
+        const {links,navClass,openClass,closeClass,onCategoryChange}=this.props
         return (
           <section className="nav-bar">
         <div className={`logon-hamburger-wrapper ${openClass}`}>
@@ -39,7 +39,7 @@ export class NavLinks extends React.Component {
           </div>
     <nav className={`${classToSelect} ${navClass}`}>
       <section className="nav-links">
-    {links.map(link => <SingleNavLink key={ link.id } url={link.url}  name={link.name}/>) }
+    {links.map(link => <SingleNavLink key={ link.id }  url={link.url}  name={link.name} onCategoryChange={onCategoryChange} />) }
       <button className={`close-nav-btn ${closeClass}`} onClick={() =>this.handleClick(this.state.closeBtn.id)}>
             X
         </button>
@@ -51,4 +51,3 @@ export class NavLinks extends React.Component {
 }
 
 
-// nav class,open class, close class,URL,linkname

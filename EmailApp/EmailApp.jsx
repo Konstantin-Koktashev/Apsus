@@ -6,6 +6,7 @@ import { EmailServices } from './EmailAppServices.js';
 import { Filter } from '../cmps/Filter.jsx';
 import { NavLinks } from '../cmps/NavLinks.jsx';
 import utilService from '../services/utilService.js';
+import { EmailInbox } from './EmailInbox.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 const { createBrowserHistory } = History;
@@ -15,14 +16,20 @@ export class EmailApp extends React.Component {
   state = {
     emails: null,
     filterBy: '',
+    catagory:''
   };
   componentDidMount() {
     this.loadEmails();
   }
-  loadEmails() {
-    EmailServices.query(this.state.filterBy).then((emails) => {
-      this.setState({ emails });
-    });
+  async loadEmails(catagory) {
+    if (catagory) {
+      const emails = await EmailServices.getEmailByCatagory(catagory);
+      this.setState({ emails: emails });
+    } else {
+      EmailServices.query(this.state.filterBy).then((emails) => {
+        this.setState({ emails });
+      });
+    }
   }
   onSetFilter = (filterBy) => {
     this.setState({ filterBy }, () => this.loadEmails());
@@ -33,32 +40,33 @@ export class EmailApp extends React.Component {
   };
   toggleImportance = (emailId) => {
     EmailServices.toggleEmailImportance(emailId);
+    this.loadEmails(this.state.catagory);
+  };
+  onReadEmail = (emailId) => {
+    EmailServices.setEmailToRead(emailId);
     this.loadEmails();
+  };
+  onCategoryChange =async  (catagory) => {
+    console.log('hello');
+    const emails=await EmailServices.getEmailByCatagory(catagory)
+    this.setState({emails,catagory})
   };
   render() {
     const { emails } = this.state;
     const location = this.props.location.pathname;
-    // const emailList =
-    // location === '/email' ? (
-    //   <EmailList
-    //     emails={emails}
-    //     toggleImportance={this.toggleImportance}
-    //   ></EmailList>
-    // ) : (
-    //   ''
-    // );
     const links = [
       { id: utilService.makeId(), url: 'email/inbox', name: 'Inbox' },
       { id: utilService.makeId(), url: 'email/starred', name: 'Starred' },
       { id: utilService.makeId(), url: 'email/send', name: 'Sent' },
       { id: utilService.makeId(), url: 'email/drafts', name: 'Drafts' },
-      { id: utilService.makeId(), url: 'email/compose', name: 'compose' },
+      // { id: utilService.makeId(), url: 'email/compose', name: 'compose' },
     ];
 
     return (
       <div className="email-wrapper">
         <section className="filter-search-bar">
           <NavLinks
+          onCategoryChange={this.onCategoryChange}
             links={links}
             navClass="email-navbar"
             openClass="email-open-nav"
@@ -69,12 +77,14 @@ export class EmailApp extends React.Component {
             placeHolder="Search By Sender,subject,Id"
           ></Filter>
         </section>
-
-        {/* {emails && <EmailDetails email={emails[0]}></EmailDetails>} */}
         <Switch>
           <Route
             render={(props) => <EmailCompose {...props} />}
             path="/email/compose"
+          />
+          <Route
+            render={(props) => <EmailInbox {...props} />}
+            path="/email/inbox"
           />
           <Route component={EmailDetails} exact path="/email/:emailId" />
           <Route
@@ -84,6 +94,8 @@ export class EmailApp extends React.Component {
                   <EmailList
                     emails={emails}
                     toggleImportance={this.toggleImportance}
+                    onReadEmail={this.onReadEmail}
+                    onCategoryChange={this.onCategoryChange}
                   />
                 )
               );

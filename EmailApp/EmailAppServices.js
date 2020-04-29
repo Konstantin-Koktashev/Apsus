@@ -12,7 +12,11 @@ export const EmailServices = {
   remove,
   getEmailById,
   getShortTxt,
-  toggleEmailImportance
+  toggleEmailImportance,
+  setEmailToRead,
+  getEmailByCatagory,
+  markEmailSent,
+  getOverviewEmails
 };
 
 function query(filerBy) {
@@ -38,18 +42,24 @@ function _creatEmails() {
 }
 function _creatEmail(
   sender = "Kosta",
+  sendTo ='Coding-Academy',
   subject = "Email Subject",
   body = "EmailBody",
-  isRead = true,
-  isImportant = true,
-  SentAt
+  isRead = false,
+  isImportant = false,
+  isSent=false,
+  isDraft=false
+  
 ) {
   return {
     sender,
+    sendTo,
     subject,
     body,
     isRead,
     isImportant,
+    isSent,
+    isDraft,
     sentAt: Date.now(),
     id: makeId(),
   };
@@ -58,19 +68,34 @@ function _creatEmail(
 function remove(emailId) {
   const EmailIdx = _getIdxById(emailId);
   gEmails.splice(EmailIdx, 1);
-  storageService.store(STORAGE_KEY, gEmails);
+  StorageServices.store(STORAGE_KEY, gEmails);
   return Promise.resolve();
 }
 
 
-function save(emailToSave) {
+function save(emailToSave,isRead=false,isImportant=false,isSent=false,isDraft=false) {
   var savedEmail = emailToSave;
   if (emailToSave.id) {
       const emailIdx = _getIdxById(emailToSave.id)
       gEmails[emailIdx] = emailToSave;
   } else {
-    savedEmail = _creatEmail()
-      gEmails.push(savedEmail)
+    const{SendTo,subject,body}=emailToSave
+    if(isRead){
+      savedEmail = _creatEmail(undefined,SendTo,subject,body,true)
+      gEmails.unshift(savedEmail)
+    }
+    if(isImportant){
+      savedEmail = _creatEmail(undefined,SendTo,subject,body,undefined,true)
+      gEmails.unshift(savedEmail)
+    }
+    if(isSent){
+      savedEmail = _creatEmail(undefined,SendTo,subject,body,undefined,undefined,true)
+      gEmails.unshift(savedEmail)
+    }
+    if(isDraft){
+      savedEmail = _creatEmail(undefined,SendTo,subject,body,undefined,undefined,undefined,true)
+      gEmails.unshift(savedEmail)
+    }
   }
   StorageServices.store(STORAGE_KEY, gEmails)
   return Promise.resolve(savedEmail||emailToSave)
@@ -90,8 +115,30 @@ async function toggleEmailImportance(id){
   email.isImportant=!email.isImportant
   save(email)
 }
+async function setEmailToRead(id){
+  let email= await getEmailById(id)
+  email.isRead=true
+  save(email)
+}
 
 
 function _getIdxById(emailId) {
   return gEmails.findIndex(email => email.id === emailId)
+}
+
+async function getEmailByCatagory(catagory){
+  if(catagory==='inbox') return gEmails
+  if(catagory==='sent')return gEmails.filter(email=>email.isSent)
+  if(catagory==='draft')return gEmails.filter(email=>email.isDraft)
+  if(catagory==='starred')return gEmails.filter(email=>email.isImportant)
+}
+
+ function markEmailSent(emailToMark){
+  emailToMark.isSent=true
+}
+
+function getOverviewEmails(){
+  let emails=gEmails.filter(email=>email.isImportant)
+  if(emails.length>5)emails=emails.slice(0,5)
+  return emails
 }

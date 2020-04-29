@@ -6,7 +6,9 @@ import { EmailApp } from './EmailApp/EmailApp.jsx';
 import { NoteApp } from './NoteApp/NoteApp.jsx';
 import { BookApp } from './pages/BookApp.jsx';
 import { NavLinks } from './cmps/NavLinks.jsx';
+
 import { Header } from './cmps/header.jsx';
+import { eventBus } from './services/eventBusService.js';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch, NavLink } = ReactRouterDOM;
 const history = History.createBrowserHistory();
@@ -14,6 +16,22 @@ const history = History.createBrowserHistory();
 // const History = History.createBrowserHistory();
 
 export class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { screenWidth: null };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+  componentDidMount() {
+    window.addEventListener("resize", this.updateWindowDimensions());
+}
+
+
+updateWindowDimensions() {
+  this.setState({ screenWidth: window.innerWidth },()=>{
+    eventBus.emit('screenResized',this.state.screenWidth)
+   });
+}
+
   render() {
     const links = [
       {
@@ -44,11 +62,8 @@ export class App extends React.Component {
     ];
 
     return (
-      // const {links,navClass,openClass,closeClass}=this.props
       <Router>
-      {/* <NavLinks links={links} navClass='' openClass='' closeClass=''></NavLinks> */}
         <Header></Header>
-        {/* <NavBar></NavBar> */}
         <Switch>
           <div className="wrapper">
             <Route exact path="/" component={Home} />
