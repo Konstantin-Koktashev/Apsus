@@ -1,6 +1,6 @@
 
 import NoteService from '../service/NoteServices.js'
-import {StorageServices} from '../../services/storageService.js'
+import {StorageServices} from '../../services/StorageService.js'
 export function NotePreviewToolBar(props) {
     const {note} = props
     let paintBarIsShown = false;
@@ -65,9 +65,9 @@ export function NotePreviewToolBar(props) {
     
     return (
         <div className="noteToolBar">
-        <button onClick={onPinNote}><img src="../assets/img/noteicons/pin icon.svg" className="pin-icon" ></img></button>
-        <button onClick={onDeleteNote}><img src="../assets/img/noteicons/delete icon.png" className="delete-icon"></img> </button>
-        <button onClick={onPaintNote}><img src="../assets/img/noteicons/paint icon.png" className="paint-icon"></img> </button>
+        <button onClick={onPinNote}><img src="/assets/img/noteicons/pin icon.svg" className="pin-icon" ></img></button>
+        <button onClick={onDeleteNote}><img src="/assets/img/noteicons/delete icon.png" className="delete-icon"></img> </button>
+        <button onClick={onPaintNote}><img src="/assets/img/noteicons/paint icon.png" className="paint-icon"></img> </button>
 
         <div className="changeColor" id={note.id}>
                    <button name="lightgreen" className="lightGreen" onClick={onSetBgc}></button>

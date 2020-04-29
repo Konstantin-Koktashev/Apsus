@@ -1,8 +1,9 @@
 import { PinnedNotes } from '../NoteApp/NoteCmp/PinnedNotes.jsx';
 import { EmailServices } from '../EmailApp/EmailAppServices.js';
 import { EmailOverView } from './OverviewCmps/EmailOverView.jsx';
-import { StorageServices } from '../services/storageService.js';
 import {BookApp} from '../BookApp/BookApp.jsx';
+import { StorageServices } from '../services/StorageService.js';
+import { Books } from '../BookApp/BookCmps/BookToPreview.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { NavLink } = ReactRouterDOM;
 export class Overview extends React.Component {
@@ -12,7 +13,7 @@ export class Overview extends React.Component {
   };
   componentDidMount() {
     this.setState({ emails: EmailServices.getOverviewEmails() });
-  //  this.loadNotes()
+   this.loadNotes()
   }
 
   
@@ -23,7 +24,7 @@ export class Overview extends React.Component {
   };
 
  loadNotes = () => {
-  const newNotes = StorageServices.load('notes');
+  const newNotes = StorageServices.load('notes')
   this.setState({ notes: newNotes });
   
  }
@@ -48,15 +49,13 @@ export class Overview extends React.Component {
           </section>
           <section className="book-app-board">
             <div className="board-header">
-              <h4>Book App</h4>
+            
               <NavLink exact to="/book">
-                <BookApp></BookApp>
+                BookApp
+               <Books></Books>
               </NavLink>
             </div>
-            <div className="testing">Hello World</div>
-            <div className="testing">Hello World</div>
-            <div className="testing">Hello World</div>
-            <div className="testing">Hello World</div>
+           
           </section>
         </section>
       </div>
