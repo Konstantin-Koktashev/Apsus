@@ -262,11 +262,32 @@ main h6 {
 } */
 
 .note-app-board .pinnedNotesContainer {
-  grid-template-columns: repeat(1, 1fr);
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
   
+  max-width: 100%;
   background: none;
   
+}
+
+.note-app-board .pinnedNotesContainer .note-preview {
+  height: auto !important;
+  margin: 1rem auto;
+}
+
+.note-app-board .pinnedNotesContainer .noteBg {
+min-height: 100px;
+height: auto !important;
+margin: 0.5rem 0 !important;
+}
+
+.note-app-board .pinnedNotesContainer .noteBg .noteToolBar {
+  height: 30px;
+  
+}
+
+.note-app-board .pinnedNotesContainer .noteBg .paint-icon {
+  display: none;
 }
 
 /* About Page */
