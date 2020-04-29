@@ -1,7 +1,7 @@
 import NewNotePreview from './NewNotePreview.jsx'
 import NoteAppServices from '../service/NoteServices.js';
 import NoteServices from '../service/NoteServices.js';
-export default class InputForm extends React.Component{
+export default class EditNote extends React.Component{
 
     state = {
         formType: 'text',
@@ -10,11 +10,6 @@ export default class InputForm extends React.Component{
         noteBgc: 'lightgreen'
     }
 
-    
-    
-    componentDidUpdate(prevProps, prevState) {
-     
-    }
 
     changeFormType = (ev) => {
         this.setState({formType: ev.target.name})
@@ -34,7 +29,7 @@ export default class InputForm extends React.Component{
  
     onSaveNote = (ev) => {
         ev.preventDefault()
-        console.log(this.state.newNote)
+        
         NoteAppServices.save(this.state.newNote)
         .then(savedNote => {
             // this.props.history.push('/note')
@@ -49,7 +44,7 @@ export default class InputForm extends React.Component{
     onSetBgc = (ev) => {
         ev.preventDefault()
         this.setState({noteBgc: ev.target.name})
-        console.log(this.state)
+        
     }
     
 

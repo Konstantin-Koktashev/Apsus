@@ -1,5 +1,5 @@
-import InputForm from './NoteCmp/EditNote.jsx';
-import PinnedNotes from './NoteCmp/PinnedNotes.jsx';
+import EditNote from './NoteCmp/EditNote.jsx';
+import {PinnedNotes} from './NoteCmp/PinnedNotes.jsx';
 import Gallery from './NoteCmp/Gallery.jsx';
 import NoteAppServices from './service/NoteServices.js';
 import NewNotePreview from './NoteCmp/NewNotePreview.jsx';
@@ -15,8 +15,10 @@ const history = createBrowserHistory();
 export class NoteApp extends React.Component {
   state = {
     notes: [],
+    pinnedNotes: [],
     showSideBar: false,
     filterBy: '',
+
   };
   componentDidMount() {
     this.loadNotes();
@@ -50,7 +52,7 @@ export class NoteApp extends React.Component {
 
     return (
       <div className="NotePage">
-        {/* <div onClick={this.toggleSideBar}><Hamburger></Hamburger></div> */}
+      
 
         <div className="NoteSearchBar">
           <Filter
@@ -66,36 +68,35 @@ export class NoteApp extends React.Component {
           ></NavLinks>
         </div>
 
-        {/* <SideBarToDo show={this.state.showSideBar} ></SideBarToDo> */}
-
         <h1>Manage your notes</h1>
+
         <Switch>
           <Route
             render={(props) => {
-              return <InputForm history={history} />;
+              return <EditNote history={history} />;
             }}
             path="/note/edit"
           />
+
+              <Route 
+                render={(props) => {
+                  return <PinnedNotes/>
+                }}
+                path="/note/pinned"
+              />
+
+             
+
 
           <Route
             render={(props) => {
               return notes && <Gallery notes={notes} />;
             }}
             path="/note"
-          />
+            />
 
-          <Route 
-            render={(props) => {
-              return
-            }}
-            path="/pinned"
-          />
-        </Switch>
-        {/* 
-        <main className="mainContent">
-          <PinnedNotes></PinnedNotes>
-          {notes && <Gallery notes={notes}></Gallery>}
-        </main> */}
+            </Switch>
+      
       </div>
     );
   }

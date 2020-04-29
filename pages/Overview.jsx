@@ -1,11 +1,20 @@
+import {PinnedNotes} from '../NoteApp/NoteCmp/PinnedNotes.jsx'
+
 const Router = ReactRouterDOM.HashRouter;
 const { NavLink } = ReactRouterDOM;
 export class Overview extends React.Component{
     state={
-
+       
     }
-    componentDidMount(){}
+    componentDidMount(){
+
+      
+    }
+
     render(){
+
+
+
         return(
             <div className="overview">
             <h1>Welcome To Apsus</h1>
@@ -15,11 +24,10 @@ export class Overview extends React.Component{
                     <NavLink exact to="/email">Email App</NavLink>
                 </div>
             </section>
-            <section className="todo-app-board">
+            <section className="note-app-board">
             <div className="board-header">
-                    <h4>Note App</h4>
                     <NavLink exact to="/note">Note App</NavLink>
-
+                    <PinnedNotes/>
              
                 </div>
             </section>

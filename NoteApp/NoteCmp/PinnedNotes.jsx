@@ -1,26 +1,27 @@
-export default class InputForm extends React.Component{
+import {StorageService, StorageServices} from '../../services/storageService.js'
+import NotePreview from './NotePreview.jsx'
+import {NotePreviewToolBar} from './NotePreviewToolBar.jsx'
 
-    state = {
-        
-    }
+export function PinnedNotes(props) {
 
-
-    render(){
-
+        const notes = StorageServices.load('pinnedNotes')
+        console.log(notes)
         return (
             <div className="pinnedNotesContainer">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+               {notes.map((note) => (
+        <div
+          key={note.id}
+          style={{ backgroundColor: note.bgc }}
+          className="noteBg"
+        >
+          {' '}
+          <NotePreview key={note.id} note={note} />{' '}
+          <NotePreviewToolBar note={note} />{' '}
+          
+        </div>
+      ))}
+    </div>
+           
         )
-    }
 
 }

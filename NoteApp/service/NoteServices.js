@@ -4,26 +4,38 @@ export default {
   query,
   save,
   setPlaceHolder,
-  // remove,
+  savePinnedNote,
+  remove,
   // getTodoById,
 };
 
 const STORAGE_KEY = 'notes';
+const STORAGE_PINNED_KEY = 'pinnedNotes'
 let gNotes = null;
+let gPinnedNotes = [];
+let gDefaultPinnedNote =[ _createNote('text', '"Be the change you want to see in the world"', 'lightgreen', true)]
 
-function _createNote(dataType, data, bgc) {
+function _createNote(dataType, data, bgc, optIsPinned ) {
   return {
     id: utilService.makeId(),
     dataType,
     data,
-    bgc
+    bgc,
+    isPinned: optIsPinned || false,
+    isEdit: false
   };
 }
 
+function _createPinnedNotes() {
+  gPinnedNotes = StorageServices.load(STORAGE_PINNED_KEY, gDefaultPinnedNote)
+  StorageServices.store(STORAGE_PINNED_KEY, gDefaultPinnedNote);
+}
+_createPinnedNotes()
+
 const gDefaultNotes = [
   _createNote('text', 'ThisIsBody', 'lightgreen'),
-  _createNote('image', 'https://images.befunky.com/wp/wp-2014-08-milky-way-1023340_1280.jpg?auto=format&fm=jpg&q=75&w=1184&ixlib=js-1.4.1'),
-  _createNote('video', 'https://www.youtube.com/embed/HuS5NuXRb5Y')
+  _createNote('image', 'https://images.befunky.com/wp/wp-2014-08-milky-way-1023340_1280.jpg?auto=format&fm=jpg&q=75&w=1184&ixlib=js-1.4.1', 'lightsalmon'),
+  _createNote('video', 'https://www.youtube.com/embed/HuS5NuXRb5Y', 'lightblue')
 ];
 
 function _creatNotes() {
@@ -31,6 +43,7 @@ function _creatNotes() {
   StorageServices.store(STORAGE_KEY, gNotes);
 }
 _creatNotes();
+
 
 function save(noteToSave) {
   var savedNote = noteToSave;
@@ -42,8 +55,11 @@ function save(noteToSave) {
     gNotes.push(savedNote);
   }
   StorageServices.store(STORAGE_KEY, gNotes);
-  console.log(gNotes)
   return Promise.resolve(savedNote);
+}
+
+function _getIdxById(noteId) {
+  return gNotes.findIndex((note) => note.id === noteId);
 }
 
 function query(filterBy) {
@@ -80,4 +96,29 @@ function setPlaceHolder(type) {
   }
 }
   
+
+function savePinnedNote(note) {
+  let notes = StorageServices.load(STORAGE_PINNED_KEY);
+  if (!notes) {
+    notes = gPinnedNotes;
+    notes.push(note);
+    StorageServices.store(STORAGE_PINNED_KEY, notes)
+
+  } else {
+    notes.push(note);
+    StorageServices.store(STORAGE_PINNED_KEY, notes)
+  }
+  return Promise.resolve()
+}
+
+
+
+
+function remove(noteId) {
+  const noteIdx = _getIdxById(noteId)
+  gNotes.splice(noteIdx, 1)
+
+  StorageServices.store(STORAGE_KEY, gNotes)
+  return Promise.resolve();
+}
 
