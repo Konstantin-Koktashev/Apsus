@@ -19,9 +19,7 @@ export class NavLinks extends React.Component {
 
     }
     
-    componentDidMount(){
 
-  }
     handleClick=(id)=>{
         (id===1)?this.setState({isSideMenueShown:true}):this.setState({isSideMenueShown:false})  
     }
@@ -40,10 +38,10 @@ export class NavLinks extends React.Component {
     <nav className={`${classToSelect} ${navClass}`}>
       <section className="nav-links">
     {links.map(link => <SingleNavLink key={ link.id }  url={link.url}  name={link.name} onCategoryChange={onCategoryChange} />) }
+      </section>
       <button className={`close-nav-btn ${closeClass}`} onClick={() =>this.handleClick(this.state.closeBtn.id)}>
             X
         </button>
-      </section>
     </nav>
     </section>
   );

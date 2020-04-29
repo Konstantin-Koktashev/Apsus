@@ -55,13 +55,14 @@ export class EmailCompose extends React.Component {
         </section>
         <section className="email-body">
           <label htmlFor=""></label>
-          <input
-            type="text"
+          {/* <input
+            type="text-area"
             value={email.body}
             name="body"
             onChange={this.handleInput}
             placeholder="Compose Email"
-          />
+          /> */}
+          <textarea name="body" onChange={this.handleInput} placeholder="Compose Email" value={email.body}></textarea>
           <button type="submit">Send</button>
         </section>
       </form>

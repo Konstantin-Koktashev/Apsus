@@ -21,12 +21,10 @@ export class EmailDetails extends React.Component {
     return (
       
       <div className="full-email">
-        <h2>Hello</h2>
-        <GoBack backBtnSecondClass="email-go-back"></GoBack>
-        <section className="email-topic"></section>
-        <section className="sender-name">{email.sender}</section>
-        <section className="email-topic">{email.topic}</section>
+        <section className="sender-name">Sent By:{email.sender}</section>
+    <section className="email-subject">{email.subject}</section>
         <section className="email-body">{email.body}</section>
+        <GoBack backBtnSecondClass="email-go-back"></GoBack>
       </div>
     );
   }

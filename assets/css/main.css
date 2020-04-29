@@ -245,13 +245,16 @@ main h6 {
   border-radius: 0.3rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
 }
 .important-overview a{
   flex-grow: 1;
 }
 .overview-icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   /* flex-grow: 1; */
 }
 
@@ -723,11 +726,24 @@ h3 {
 @media (max-width: 968px) {
   .gallery, .pinnedNotesContainer {
     grid-template-columns: repeat(2, 1fr);
-  }
+  
+}}
 /* Email Compose */
 .email-list{
   flex-grow: 1;
   /* position: relative; */
+}
+
+/* Email Details */
+.sender-name{
+  font-family: meri;
+  font-size: 1.4rem;
+}
+.email-text h6{
+  padding: 0.4em;
+}
+.email-subject{
+  font-family: lato;
 }
 .compose-email-btn{
   height: 60px;
@@ -737,12 +753,22 @@ h3 {
   left:50%;
   z-index: 999;
 }
+.full-email{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+}
+.full-email section{
+  padding: 1em;
+}
+.full-email .email-body{
+  flex-grow: 1;
+}
 
 .email-compose-form{
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-grow: 1;
 }
 
@@ -757,6 +783,7 @@ h3 {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .email-send-to{
@@ -770,7 +797,7 @@ h3 {
 .email-body{
   display: flex;
 }
-.email-body input{
+.email-body textarea{
   flex-grow: 1;
   display:block;
   border:none;
