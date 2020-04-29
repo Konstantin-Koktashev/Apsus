@@ -44,6 +44,7 @@ export class Header extends React.Component {
           openClass=""
           closeClass=""
         ></NavLinks>
+          <section className="title-and-button">
           <h3>
             <span>Appsus</span>
           </h3>
@@ -51,6 +52,7 @@ export class Header extends React.Component {
             to="/app"
             className={`secondary-call-to-action-btn ${headerBtnClass}`}
           >App</Link>
+          </section>
         </header>
     );
   }

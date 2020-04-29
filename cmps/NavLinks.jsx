@@ -23,12 +23,16 @@ export class NavLinks extends React.Component {
     handleClick=(id)=>{
         (id===1)?this.setState({isSideMenueShown:true}):this.setState({isSideMenueShown:false})  
     }
+    closeSideMenu=()=>{
+     this.setState({isSideMenueShown:false})
+     debugger
+    }
     render(){
-      
-        let classToSelect = (this.state.isSideMenueShown)? 'show-menue':''
-        let headerBtnClass =(this.state.isMainPage)? '': 'show'
+      let classToSelect = (this.state.isSideMenueShown)? 'show-menue':''
         const {links,navClass,openClass,closeClass,onCategoryChange}=this.props
         return (
+          <React.Fragment>
+              <div className="mobile-navigation">
           <section className="nav-bar">
         <div className={`logon-hamburger-wrapper ${openClass}`}>
           <button className="hambuger-menue" onClick={() =>this.handleClick(this.state.hamburgerMenue.id)}>
@@ -40,10 +44,16 @@ export class NavLinks extends React.Component {
       <button className={`close-nav-btn ${closeClass}`} onClick={() =>this.handleClick(this.state.closeBtn.id)}>
             <span>X</span>
         </button>
-    {links.map(link => <SingleNavLink key={ link.id }  url={link.url}  name={link.name} onCategoryChange={onCategoryChange} />) }
+    {links.map(link => <SingleNavLink key={ link.id }  url={link.url}  name={link.name} onCategoryChange={onCategoryChange} closeSideMenu={this.closeSideMenu} />) }
       </section>
     </nav>
     </section>
+    </div>
+    <div className="desktop-nav-bar">
+    {links.map(link => <SingleNavLink key={ link.id }  url={link.url}  name={link.name} onCategoryChange={onCategoryChange} />) }
+
+    </div>
+    </React.Fragment>
   );
 }
 }

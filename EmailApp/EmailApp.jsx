@@ -64,7 +64,6 @@ export class EmailApp extends React.Component {
 
     return (
       <div className="email-wrapper">
-        <section className="filter-search-bar">
           <NavLinks
 onCategoryChange={this.onCategoryChange}
   links={links}
@@ -72,12 +71,13 @@ onCategoryChange={this.onCategoryChange}
   openClass="email-open-nav"
   closeClass="email-close-nav"
 ></NavLinks>
+        {/* <section className="filter-search-bar">
 
           <Filter
             onSetFilter={this.onSetFilter}
             placeHolder="Search By Sender,subject,Id"
           ></Filter>
-        </section>
+        </section> */}
         <Switch>
           <Route
             render={(props) => <EmailCompose {...props} />}
@@ -91,13 +91,23 @@ onCategoryChange={this.onCategoryChange}
           <Route
             render={(props) => {
               return (
+                
                 emails && (
+                  <div className="main-email-app-body">
+                  <section className="filter-search-bar">
+
+                  <Filter
+                    onSetFilter={this.onSetFilter}
+                    placeHolder="Search By Sender,subject,Id"
+                  ></Filter>
+                </section>
                   <EmailList
                     emails={emails}
                     toggleImportance={this.toggleImportance}
                     onReadEmail={this.onReadEmail}
                     onCategoryChange={this.onCategoryChange}
                   />
+                  </div>
                 )
               );
             }}
