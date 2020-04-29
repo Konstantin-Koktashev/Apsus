@@ -4,11 +4,12 @@ import {NotePreviewToolBar} from './NotePreviewToolBar.jsx'
 
 export function PinnedNotes(props) {
 
-        const notes = StorageServices.load('pinnedNotes')
-        console.log(notes)
+        const { notes } = props
+        const pinnedNotes = notes.filter((note) => {return note.isPinned})
+        
         return (
             <div className="pinnedNotesContainer">
-               {notes.map((note) => (
+               {pinnedNotes.map((note) => (
         <div
           key={note.id}
           style={{ backgroundColor: note.bgc }}

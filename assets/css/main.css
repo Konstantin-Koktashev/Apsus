@@ -344,88 +344,23 @@ h3 {
 .NoteSearchBar form {
   width: 80%;
   margin: 0 auto;
+
 }
 
 .NoteSearchBar form input {
   width: 100%;
   text-align: center;
+  height: 2rem;
 }
 
 .NoteSearchBar .nav-bar {
   position: absolute;
   left: 11%;
   cursor: pointer;
+  top: 6px;
 }
 
-/* Hamburger */
 
-.hamburger {
-  z-index: 10;
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.hamburger .bar1,
-.bar2,
-.bar3 {
-  width: 35px;
-  height: 6px;
-  background-color: #333;
-  margin: 5px auto;
-  transition: 0.4s;
-}
-
-.change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-9px, 6px);
-  background-color: rgb(221, 33, 130);
-}
-
-.change .bar2 {
-  opacity: 0;
-}
-
-.change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-8px, -8px);
-  background-color: rgb(221, 33, 130);
-}
-/* Side Bar */
-
-.sideBar {
-  width: 40%;
-  background-color: #eee;
-  height: 100%;
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  border-right: rgb(255, 0, 131) solid 2px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.5s ease-in-out;
-}
-
-.sideBarHide {
-  width: 40%;
-  background-color: #eee;
-  height: 100%;
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  border-right: rgb(255, 0, 131) solid 2px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.5s ease-in-out;
-
-  transform: translateX(-100%);
-}
 
 .addNoteBtn {
   height: 50px;
@@ -441,7 +376,7 @@ h3 {
 
 .addBtnContainer {
   width: 90vw;
-  text-align: center;
+  text-align: end;
   margin: 1rem auto;
 }
 
@@ -591,6 +526,8 @@ h3 {
   right: 10px;
   width: 30px;
 }
+
+
 
 .delete-icon {
   bottom: 5px;

@@ -10,23 +10,20 @@ export function NotePreviewToolBar(props) {
     let onPaintNote = null;
     let onSetBgc = null;
 
+
+    
     onPinNote = (ev) => {
         ev.preventDefault();
         const icon = ev.target;
         console.log(note)
-       if (note.isPinned) {
-        note.isPinned = false
-        icon.style = ``;
-        const pinnedNotes = StorageServices.load('pinnedNotes')
-        const pinnedNoteIdx = pinnedNotes.findIndex((pinnedNote) => pinnedNote.id === note.id);
-        pinnedNotes.splice(pinnedNoteIdx, 1)
-        StorageServices.store('pinnedNotes', pinnedNotes);
-        NoteService.save(note);
-       }  else {
-        note.isPinned = true;
-        icon.style = `border: solid 1px #333; border-radius: 50%;`;
-        NoteService.savePinnedNote(note)
-        NoteService.save(note);
+       if (!note.isPinned) {
+           note.isPinned = true;
+           icon.style = "border: rgb(107, 107, 107) solid 1px;border-radius: 50%;"
+           NoteService.save(note);
+        }  else {
+            note.isPinned = false;
+            icon.style = "";
+            NoteService.save(note);
        } 
        
     }
