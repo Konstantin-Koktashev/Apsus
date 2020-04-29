@@ -3,8 +3,9 @@ import { eventBus } from "../services/eventBusService.js";
 const {  NavLink } = ReactRouterDOM;
 export  function SingleNavLink(props){
     const {url,name,iconPath,onCategoryChange}=props
-    var windowSize=950
+    var windowSize
     var unsubscribeFunc=  eventBus.on('screenResized', (size)=>windowSize=size)
+    console.log(windowSize);
     // console.log("SingleNavLink -> windowSize", windowSize)
     const linkProps= (onCategoryChange===undefined) ? {exact: true, to: url} : { onClick: () => {onCategoryChange(name.toLowerCase())}}
     // const icon = (iconPath===undefined) ? '' : <Image source={iconPath}/>;
