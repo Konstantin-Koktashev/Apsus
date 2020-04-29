@@ -52,14 +52,23 @@ footer {
 }
 
 /*NavBar*/
-header h3 {
-  flex-grow: 1;
-  text-align: center;
+.title-and-button {
+  width: 100%;
+  height: 70%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding-left: 2em;
-  margin-bottom: 0;
+  justify-content: center;
+}
+header h3 {
+  justify-self: flex-start;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header h3 span{
+  text-align: center;
 }
 
 header h3 span {
@@ -69,6 +78,7 @@ header h3 span {
 header .hambuger-menue {
   display: inline;
   padding: 0.3em;
+  font-size: 2rem;
 }
 .logon-hamburger-wrapper {
   display: flex;
@@ -203,7 +213,7 @@ main h6 {
   flex-direction: column;
   text-align: center;
 }
-.all-apps{
+.all-apps {
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -211,7 +221,7 @@ main h6 {
   min-width: 600px;
 }
 .all-apps section {
-  background-color: #00b0ff;;
+  background-color: #00b0ff;
   margin: 0 1em;
 }
 .all-apps section {
@@ -228,12 +238,11 @@ main h6 {
   font-family: meri;
   font-size: 2rem;
 }
-.overview-icon{
+.overview-icon {
   display: flex;
   flex-direction: column;
-  
 }
-.open-app-btn{
+.open-app-btn {
   display: block;
   text-align: center;
   margin-bottom: 1em;
@@ -250,10 +259,10 @@ main h6 {
   /* align-items: center; */
   text-align: center;
 }
-.important-overview a{
+.important-overview a {
   flex-grow: 1;
 }
-.overview-icon{
+.overview-icon {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -269,10 +278,9 @@ main h6 {
 .note-app-board .pinnedNotesContainer {
   display: flex;
   flex-direction: column;
-  
+
   max-width: 100%;
   background: none;
-  
 }
 
 .note-app-board .pinnedNotesContainer .note-preview {
@@ -281,14 +289,13 @@ main h6 {
 }
 
 .note-app-board .pinnedNotesContainer .noteBg {
-min-height: 100px;
-height: auto !important;
-margin: 0.5rem 0 !important;
+  min-height: 100px;
+  height: auto !important;
+  margin: 0.5rem 0 !important;
 }
 
 .note-app-board .pinnedNotesContainer .noteBg .noteToolBar {
   height: 30px;
-  
 }
 
 .note-app-board .pinnedNotesContainer .noteBg .paint-icon {
@@ -306,7 +313,7 @@ margin: 0.5rem 0 !important;
   grid-row: span 2;
 }
 .about-wrapper h2,
-h3 {
+.about-wrapper h3 {
   margin-bottom: 1em;
   padding: 0 0.2em;
   font-size: 2.2rem;
@@ -360,7 +367,75 @@ h3 {
   top: 6px;
 }
 
+/* Hamburger */
 
+.hamburger {
+  /* z-index: 10; */
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hamburger .bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 6px;
+  background-color: #333;
+  margin: 5px auto;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+  background-color: rgb(221, 33, 130);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+  background-color: rgb(221, 33, 130);
+}
+/* Side Bar */
+
+.sideBar {
+  width: 40%;
+  background-color: #eee;
+  height: 100%;
+  position: fixed;
+  /* z-index: 5; */
+  top: 0;
+  border-right: rgb(255, 0, 131) solid 2px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.sideBarHide {
+  width: 40%;
+  background-color: #eee;
+  height: 100%;
+  /* position: fixed; */
+  /* z-index: 5; */
+  top: 0;
+  border-right: rgb(255, 0, 131) solid 2px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+
+  /* transform: translateX(-100%); */
+}
 
 .addNoteBtn {
   height: 50px;
@@ -542,7 +617,6 @@ h3 {
   width: 30px;
 }
 
-
 .pinnedNotesContainer,
 .gallery {
   width: 90vw;
@@ -562,7 +636,7 @@ h3 {
 .gallery div {
   width: 200px;
   height: 225px;
-  
+
   border: rgba(170, 168, 169, 0.712) solid 1px;
   border-radius: 15px;
 }
@@ -581,7 +655,7 @@ h3 {
   margin: 0 auto;
 }
 
- .previewContent {
+.previewContent {
   width: 100%;
   height: 100%;
   border-radius: 15px;
@@ -607,7 +681,6 @@ h3 {
 /* Email App */
 .email-navbar {
   height: 100vh;
-  position: absolute;
   top: 20%;
   overflow: hidden;
 }
@@ -617,7 +690,8 @@ h3 {
   /* align-items: center; */
   /* justify-content: center; */
   justify-content: space-around;
-  position: relative;
+  /* position: relative; */
+  padding-bottom: 1em;
 }
 .filter-search-bar button {
   /* justify-self: flex-end; */
@@ -641,11 +715,10 @@ h3 {
   font-family: lato;
 }
 .email-close-nav {
-  position: static;
+  /* position: static; */
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  
 }
 .email-wrapper form {
   text-align: center;
@@ -696,54 +769,56 @@ h3 {
 /* Note Media Query */
 
 @media (max-width: 1400px) {
-  .gallery, .pinnedNotesContainer {
+  .gallery,
+  .pinnedNotesContainer {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (max-width: 968px) {
-  .gallery, .pinnedNotesContainer {
+  .gallery,
+  .pinnedNotesContainer {
     grid-template-columns: repeat(2, 1fr);
-  
-}}
+  }
+}
 /* Email Compose */
-.email-list{
+.email-list {
   flex-grow: 1;
   /* position: relative; */
 }
 
 /* Email Details */
-.sender-name{
+.sender-name {
   font-family: meri;
   font-size: 1.4rem;
 }
-.email-text h6{
+.email-text h6 {
   padding: 0.4em;
 }
-.email-subject{
+.email-subject {
   font-family: lato;
 }
-.compose-email-btn{
+.compose-email-btn {
   height: 60px;
   width: 60px;
   position: absolute;
   top: 80%;
-  left:50%;
+  left: 80%;
   z-index: 999;
 }
-.full-email{
+.full-email {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   text-align: center;
 }
-.full-email section{
+.full-email section {
   padding: 1em;
 }
-.full-email .email-body{
+.full-email .email-body {
   flex-grow: 1;
 }
 
-.email-compose-form{
+.email-compose-form {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -753,40 +828,47 @@ h3 {
   margin-bottom: 0.6em;
   width: 100%;
 }
-.email-compose-form input{
+.email-compose-form input {
   width: 100%;
 }
-.email-body{
+.email-body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-.email-send-to{
+.email-send-to {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 0.6em;
-
 }
 
-.email-body{
+.email-body {
   display: flex;
 }
-.email-body textarea{
+.email-body textarea {
   flex-grow: 1;
-  display:block;
-  border:none;
-  min-width:0;
+  display: block;
+  border: none;
+  min-width: 0;
   /* overflow-wrap: break-word; */
+}
+.desktop-nav-bar{
+  display: none;
+}
+.mobile-navigation{
+  display: block;
 }
 
 @media (max-width: 658px) {
-  .gallery, .pinnedNotesContainer {
+  .gallery,
+  .pinnedNotesContainer {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+<<<<<<< HEAD
 
 
 
@@ -798,3 +880,74 @@ h3 {
   height: 80px;
   background-color: lightsalmon;
 }
+=======
+@media (min-width: 1200px) {
+.wrapper{
+height:80vh ;
+}
+
+  header {
+    height: 20vh;
+  }
+  header h3 span {
+    font-size: 3rem;
+    font-family: meri;
+  }
+
+  .mobile-navigation{
+    display: none;
+  }
+  .email-wrapper{
+    flex-direction: row;
+    width: 100%;
+  }
+  .main-email-app-body{
+    flex-grow: 1;
+  }
+  .desktop-nav-bar{
+    display: block;
+    width: 30vh;
+    display: flex;
+    flex-direction: column;
+  }.mobile-navigation{
+    display: none;
+  }
+  .desktop-nav-bar a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    border-bottom: 1px black solid;
+  }
+  .logon-hamburger-wrapper {
+    display: none;
+  }
+  .show-menue {
+    transform: translateX(0%);
+  }
+  header .nav-links {
+    transform: translateX(100%);
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5em 0.5em;
+    height: 30%;
+    font-size: 1.5rem;
+  }
+   .close-nav-btn {
+    display: none;
+  }
+
+  .nav-bar nav {
+    height: auto;
+  }
+  header .nav-bar nav {
+    width: 50%;
+  }
+  nav .nav-links a {
+    color: black;
+  }
+}
+>>>>>>> cc4321fdd7f261afe6caed02ff664f49f8024c3c

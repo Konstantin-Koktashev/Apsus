@@ -2,7 +2,7 @@ import { eventBus } from "../services/eventBusService.js";
 
 const {  NavLink } = ReactRouterDOM;
 export  function SingleNavLink(props){
-    const {url,name,iconPath,onCategoryChange}=props
+    const {url,name,iconPath,onCategoryChange,closeSideMenu}=props
     var windowSize=950
     var unsubscribeFunc=  eventBus.on('screenResized', (size)=>windowSize=size)
     // console.log("SingleNavLink -> windowSize", windowSize)
@@ -13,7 +13,7 @@ export  function SingleNavLink(props){
     
     // console.log("linkProps -> icon", icon)
     return(
-        <NavLink  {...linkProps}>
+        <NavLink  {...linkProps} onClick={()=>closeSideMenu()}>
           {icon}
           {name}
         </NavLink>
