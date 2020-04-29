@@ -108,10 +108,12 @@ nav .nav-links a {
 }
 
 .close-nav-btn {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 87%;
-  padding: 0.4em;
+  padding: 0.4em; */
+  display: flex;
+  justify-content: f;
 }
 
 .show-menue {
@@ -245,13 +247,16 @@ main h6 {
   border-radius: 0.3rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
 }
 .important-overview a{
   flex-grow: 1;
 }
 .overview-icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   /* flex-grow: 1; */
 }
 
@@ -657,7 +662,6 @@ h3 {
   grid-row: span 2;
   display: flex;
   flex-direction: column;
-  padding: 0 0.3em;
 }
 .email-wrapper h5 {
   padding: 0.6em 0.3em;
@@ -666,21 +670,25 @@ h3 {
 /* Email App */
 .email-navbar {
   height: 100vh;
+  position: absolute;
+  top: 20%;
+  overflow: hidden;
 }
+
 .filter-search-bar {
   display: flex;
   /* align-items: center; */
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: space-around;
   position: relative;
 }
 .filter-search-bar button {
   /* justify-self: flex-end; */
-  position: absolute;
+  /* position: absolute; */
   left: 11%;
   bottom: 5%;
 }
 .filter-search-bar form {
-  flex: 1;
   text-align: center;
 }
 .filter-search-bar input {
@@ -694,6 +702,13 @@ h3 {
   padding: 0.3em;
   margin-bottom: 0.8em;
   font-family: lato;
+}
+.email-close-nav {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  
 }
 .email-wrapper form {
   text-align: center;
@@ -751,11 +766,24 @@ h3 {
 @media (max-width: 968px) {
   .gallery, .pinnedNotesContainer {
     grid-template-columns: repeat(2, 1fr);
-  }
+  
+}}
 /* Email Compose */
 .email-list{
   flex-grow: 1;
   /* position: relative; */
+}
+
+/* Email Details */
+.sender-name{
+  font-family: meri;
+  font-size: 1.4rem;
+}
+.email-text h6{
+  padding: 0.4em;
+}
+.email-subject{
+  font-family: lato;
 }
 .compose-email-btn{
   height: 60px;
@@ -765,12 +793,22 @@ h3 {
   left:50%;
   z-index: 999;
 }
+.full-email{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+}
+.full-email section{
+  padding: 1em;
+}
+.full-email .email-body{
+  flex-grow: 1;
+}
 
 .email-compose-form{
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-grow: 1;
 }
 
@@ -785,6 +823,7 @@ h3 {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .email-send-to{
@@ -798,7 +837,7 @@ h3 {
 .email-body{
   display: flex;
 }
-.email-body input{
+.email-body textarea{
   flex-grow: 1;
   display:block;
   border:none;
