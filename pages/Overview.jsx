@@ -42,7 +42,7 @@ export class Overview extends React.Component {
           <section className="note-app-board">
             <div className="board-header">
               <NavLink exact to="/note">
-                Note App
+                <button className='pure-material-button-contained'>Open App</button>
               </NavLink>
               { notes && <PinnedNotes notes={notes}/>}
             </div>
@@ -51,7 +51,7 @@ export class Overview extends React.Component {
             <div className="board-header">
             
               <NavLink exact to="/book">
-                BookApp
+                <button className='pure-material-button-contained'>Open App</button>
                <Books></Books>
               </NavLink>
             </div>

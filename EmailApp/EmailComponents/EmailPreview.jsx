@@ -2,7 +2,7 @@ import { EmailServices } from '../EmailAppServices.js';
 const { Link } = ReactRouterDOM;
 
 export function EmailPreview(props) {
-  const { email } = props;
+  const { email,onDelete } = props;
   let { isRead } = email;
   let { isImportant } = email;
   let imgUrl = isRead
@@ -21,8 +21,9 @@ export function EmailPreview(props) {
       // }}
     >
       <section className="email-read-indicator">
-          <div className="email-read-indicator-icon">
+          <div className="email-read-indicator-icon delet-icon">
         <img src={imgUrl} alt="" />
+        <img src="EmailApp/emailicons/delete.svg" onClick={()=>onDelete(email.id)}/>
         </div>
       </section>
       <section className="email-text-preview">

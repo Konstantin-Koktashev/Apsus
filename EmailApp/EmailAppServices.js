@@ -1,10 +1,35 @@
 import { StorageServices } from "../services/StorageService.js";
 import { makeId } from "../services/utilService.js";
 
-const gDefaultEmails = [_creatEmail('Yosi'), _creatEmail()];
+const gDefaultEmails = [];
 var gEmails = null;
 const STORAGE_KEY = "emails";
-_creatEmails();
+(function () {
+
+  for (var i = 0; i < 20; i++) {
+    let sender=(Math.random()>0.5)?'Kosta':'Adi'
+    let sendTo=(Math.random()>0.5)?'Coding-Academy':'GoogleJobs'
+    let subject=(Math.random()>0.5)?'This Is A Dummy Email':'Hoping It Wont Be Soon'
+    let body=(Math.random()>0.5)?'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum':'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'
+    let isImportant=(Math.random()>0.5)?false:true
+    let isRead=(Math.random()>0.5)?false:true
+    let isSent=(Math.random()>0.5)?false:true
+    let isDraft=(Math.random()>0.5)?false:true
+
+
+    const email = _creatEmail(sender,sendTo,subject,body,isRead,isImportant,isSent,isDraft);
+    gDefaultEmails.push(email)
+  }
+  _creatEmails()
+})();
+// sender = "Kosta",
+// sendTo ='Coding-Academy',
+// subject = "Email Subject",
+// body = "EmailBody",
+// isRead = false,
+// isImportant = false,
+// isSent=false,
+// isDraft=false
 
 export const EmailServices = {
   query,

@@ -48,7 +48,6 @@ export class EmailApp extends React.Component {
   };
   onCategoryChange =async  (catagory) => {
     const emails=await EmailServices.getEmailByCatagory(catagory)
-    debugger
     this.setState({emails,catagory})
   };
   render() {
@@ -59,7 +58,6 @@ export class EmailApp extends React.Component {
       { id: utilService.makeId(), url: 'email/starred', name: 'Starred' },
       { id: utilService.makeId(), url: 'email/send', name: 'Sent' },
       { id: utilService.makeId(), url: 'email/drafts', name: 'Drafts' },
-      // { id: utilService.makeId(), url: 'email/compose', name: 'compose' },
     ];
 
     return (
@@ -71,13 +69,7 @@ onCategoryChange={this.onCategoryChange}
   openClass="email-open-nav"
   closeClass="email-close-nav"
 ></NavLinks>
-        {/* <section className="filter-search-bar">
 
-          <Filter
-            onSetFilter={this.onSetFilter}
-            placeHolder="Search By Sender,subject,Id"
-          ></Filter>
-        </section> */}
         <Switch>
           <Route
             render={(props) => <EmailCompose {...props} />}
@@ -106,6 +98,7 @@ onCategoryChange={this.onCategoryChange}
                     toggleImportance={this.toggleImportance}
                     onReadEmail={this.onReadEmail}
                     onCategoryChange={this.onCategoryChange}
+                    onDelete={this.onDelete}
                   />
                   </div>
                 )

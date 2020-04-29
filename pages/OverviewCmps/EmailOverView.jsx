@@ -17,8 +17,8 @@ export class EmailOverView extends React.Component{
     render(){
         const {emails}=this.state
         return (
-            <section className="email-app-board">         
-                    <NavLink exact to="/email" className='open-app-btn'>Open App</NavLink>
+            <section className="email-app-board">      
+                    <NavLink exact to="/email" className='pure-material-button-contained'>Open App</NavLink>
                     { emails && emails.map(email => {
                         const {sender,subject,isRead}=email
                           let imgUrl = isRead

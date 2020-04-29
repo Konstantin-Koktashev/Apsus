@@ -9,6 +9,7 @@ export class EmailCompose extends React.Component {
       body: '',
     },
   };
+  
   handleInput = ({ target }) => {
     const field = target.name;
     const value = target.type === 'number' ? +target.value : target.value;
@@ -39,6 +40,7 @@ export class EmailCompose extends React.Component {
             type="text"
             value={email.sendTo}
             name="sendTo"
+            autoFocus
             onChange={this.handleInput}
             placeholder="To"
           />
