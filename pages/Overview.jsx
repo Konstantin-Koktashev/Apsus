@@ -1,3 +1,4 @@
+import {PinnedNotes} from '../NoteApp/NoteCmp/PinnedNotes.jsx'
 import { EmailServices } from "../EmailApp/EmailAppServices.js";
 
 const Router = ReactRouterDOM.HashRouter;
@@ -45,11 +46,10 @@ export class Overview extends React.Component{
                     
                     {!emails && <div>No Important Emails</div>}
             </section>
-            <section className="todo-app-board">
+            <section className="note-app-board">
             <div className="board-header">
-                    <h4>Todo App</h4>
-                    <NavLink exact to="/todo">Todo App</NavLink>
-
+                    <NavLink exact to="/note">Note App</NavLink>
+                    <PinnedNotes/>
              
                 </div>
             </section>
