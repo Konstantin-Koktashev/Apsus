@@ -28,7 +28,6 @@ export class Overview extends React.Component{
                           ? 'EmailApp/emailicons/read.svg'
                           : 'EmailApp/emailicons/unread.svg';
                         return (
-                            
                             <article className="important-overview" key={email.id}>
                             <div className="overview-icon read-unread-img-container">
                                 <img src={imgUrl} alt=""/>
