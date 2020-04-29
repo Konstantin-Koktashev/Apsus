@@ -37,11 +37,11 @@ export class NavLinks extends React.Component {
           </div>
     <nav className={`${classToSelect} ${navClass}`}>
       <section className="nav-links">
+      <button className={`close-nav-btn ${closeClass}`} onClick={() =>this.handleClick(this.state.closeBtn.id)}>
+            <span>X</span>
+        </button>
     {links.map(link => <SingleNavLink key={ link.id }  url={link.url}  name={link.name} onCategoryChange={onCategoryChange} />) }
       </section>
-      <button className={`close-nav-btn ${closeClass}`} onClick={() =>this.handleClick(this.state.closeBtn.id)}>
-            X
-        </button>
     </nav>
     </section>
   );

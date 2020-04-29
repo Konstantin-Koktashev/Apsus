@@ -66,12 +66,13 @@ export class EmailApp extends React.Component {
       <div className="email-wrapper">
         <section className="filter-search-bar">
           <NavLinks
-          onCategoryChange={this.onCategoryChange}
-            links={links}
-            navClass="email-navbar"
-            openClass="email-open-nav"
-            closeClass="email-close-nav"
-          ></NavLinks>
+onCategoryChange={this.onCategoryChange}
+  links={links}
+  navClass="email-navbar"
+  openClass="email-open-nav"
+  closeClass="email-close-nav"
+></NavLinks>
+
           <Filter
             onSetFilter={this.onSetFilter}
             placeHolder="Search By Sender,subject,Id"
