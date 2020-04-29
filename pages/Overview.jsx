@@ -2,7 +2,7 @@ import { PinnedNotes } from '../NoteApp/NoteCmp/PinnedNotes.jsx';
 import { EmailServices } from '../EmailApp/EmailAppServices.js';
 import { EmailOverView } from './OverviewCmps/EmailOverView.jsx';
 import { StorageServices } from '../services/storageService.js';
-
+import {BookApp} from '../BookApp/BookApp.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { NavLink } = ReactRouterDOM;
 export class Overview extends React.Component {
@@ -12,7 +12,7 @@ export class Overview extends React.Component {
   };
   componentDidMount() {
     this.setState({ emails: EmailServices.getOverviewEmails() });
-   this.loadNotes()
+  //  this.loadNotes()
   }
 
   
@@ -50,7 +50,7 @@ export class Overview extends React.Component {
             <div className="board-header">
               <h4>Book App</h4>
               <NavLink exact to="/book">
-                BookApp
+                <BookApp></BookApp>
               </NavLink>
             </div>
             <div className="testing">Hello World</div>

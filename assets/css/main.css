@@ -787,3 +787,14 @@ h3 {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+
+
+/* BookApp */
+
+.bookApp-content header {
+  width: 100vw;
+  display: flex;
+  height: 80px;
+  background-color: lightsalmon;
+}

@@ -4,9 +4,9 @@ import { About } from './pages/about.jsx';
 import { Overview } from './pages/Overview.jsx';
 import { EmailApp } from './EmailApp/EmailApp.jsx';
 import { NoteApp } from './NoteApp/NoteApp.jsx';
-import { BookApp } from './pages/BookApp.jsx';
+import { BookApp } from './BookApp/BookApp.jsx';
 import { NavLinks } from './cmps/NavLinks.jsx';
-
+import utilService from './services/utilService.js';
 import { Header } from './cmps/header.jsx';
 import { eventBus } from './services/eventBusService.js';
 const Router = ReactRouterDOM.HashRouter;
@@ -68,10 +68,10 @@ updateWindowDimensions() {
           <div className="wrapper">
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
-            <Route exact component={Overview} path="/app" />
             <Route component={EmailApp} path="/email" />
             <Route component={NoteApp} path="/note" />
-            <Route exact component={BookApp} path="/book" />
+            <Route  component={BookApp} path="/book" />
+            <Route exact component={Overview} path="/app" />
             <footer>Footer</footer>
           </div>
         </Switch>
