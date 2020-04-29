@@ -1,4 +1,4 @@
-import { StorageServices } from "../services/storageService.js";
+import { StorageServices } from "../services/StorageService.js";
 import { makeId } from "../services/utilService.js";
 
 const gDefaultEmails = [_creatEmail('Yosi'), _creatEmail()];

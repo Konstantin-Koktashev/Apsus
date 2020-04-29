@@ -1,4 +1,4 @@
-import {StorageService, StorageServices} from '../../services/storageService.js'
+import {StorageService, StorageServices} from '../../services/StorageService.js'
 import NotePreview from './NotePreview.jsx'
 import {NotePreviewToolBar} from './NotePreviewToolBar.jsx'
 

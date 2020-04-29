@@ -1,4 +1,4 @@
-import { StorageServices } from '../../services/storageService.js';
+import { StorageServices } from '../../services/StorageService.js';
 import utilService from '../../services/utilService.js';
 export default {
   query,

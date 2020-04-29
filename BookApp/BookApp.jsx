@@ -14,13 +14,6 @@ export class BookApp extends React.Component {
       <Router>
 
         <section className="bookApp-content">
-
-        <header className="bookHeader">
-          <img src="./assets/img/book.svg"></img>
-          <h2>Mr. Book</h2>
-
-          {/* <BookNavBar history={history}></BookNavBar> */}
-        </header>
         <main className="bookMain">
           <Switch>
             {/* <Route exact component={AboutUs} path="/about" /> */}
