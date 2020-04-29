@@ -15,7 +15,8 @@ export const EmailServices = {
   toggleEmailImportance,
   setEmailToRead,
   getEmailByCatagory,
-  markEmailSent
+  markEmailSent,
+  getOverviewEmails
 };
 
 function query(filerBy) {
@@ -67,7 +68,7 @@ function _creatEmail(
 function remove(emailId) {
   const EmailIdx = _getIdxById(emailId);
   gEmails.splice(EmailIdx, 1);
-  storageService.store(STORAGE_KEY, gEmails);
+  StorageServices.store(STORAGE_KEY, gEmails);
   return Promise.resolve();
 }
 
@@ -134,4 +135,10 @@ async function getEmailByCatagory(catagory){
 
  function markEmailSent(emailToMark){
   emailToMark.isSent=true
+}
+
+function getOverviewEmails(){
+  let emails=gEmails.filter(email=>email.isImportant)
+  if(emails.length>5)emails=emails.slice(0,5)
+  return emails
 }

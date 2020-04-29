@@ -191,11 +191,22 @@ main h6 {
 .overview {
   grid-row: span 2;
   grid-column: span 4;
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 10fr;
+  grid-template-rows: 1fr 10fr; */
+  /* gap: 1em; */
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  gap: 1em;
+}
+.all-apps{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.all-apps section {
+  width: 33%;
+  padding: 1em;
 }
 .overview h1 {
   grid-column: 1/-1;
@@ -207,18 +218,33 @@ main h6 {
   font-family: meri;
   font-size: 2rem;
 }
-.overview section {
+.overview-icon{
   display: flex;
   flex-direction: column;
-  font-family: lato;
-  background-color: rgb(211, 211, 211);
+  
 }
-.overview .testing {
+.open-app-btn{
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.important-overview {
   background-color: #fff;
   box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
   min-height: 20%;
   margin: 0.3em;
   border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.overview-text{
+  flex-grow: 4;
+}
+.overview-icon{
+  flex-grow: 1;
 }
 
 /* About Page */
