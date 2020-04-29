@@ -351,17 +351,20 @@ main h6 {
 .NoteSearchBar form {
   width: 80%;
   margin: 0 auto;
+
 }
 
 .NoteSearchBar form input {
   width: 100%;
   text-align: center;
+  height: 2rem;
 }
 
 .NoteSearchBar .nav-bar {
   position: absolute;
   left: 11%;
   cursor: pointer;
+  top: 6px;
 }
 
 /* Hamburger */
@@ -448,7 +451,7 @@ main h6 {
 
 .addBtnContainer {
   width: 90vw;
-  text-align: center;
+  text-align: end;
   margin: 1rem auto;
 }
 
@@ -598,6 +601,8 @@ main h6 {
   right: 10px;
   width: 30px;
 }
+
+
 
 .delete-icon {
   bottom: 5px;

@@ -6,6 +6,7 @@ export default {
   setPlaceHolder,
   savePinnedNote,
   remove,
+  
   // getTodoById,
 };
 
@@ -15,27 +16,22 @@ let gNotes = null;
 let gPinnedNotes = [];
 let gDefaultPinnedNote =[ _createNote('text', '"Be the change you want to see in the world"', 'lightgreen', true)]
 
-function _createNote(dataType, data, bgc, optIsPinned ) {
+function _createNote(dataType, data, bgc, optPinned) {
   return {
     id: utilService.makeId(),
     dataType,
     data,
     bgc,
-    isPinned: optIsPinned || false,
-    isEdit: false
+    isPinned: optPinned ? optPinned : false,
+    
   };
 }
 
-function _createPinnedNotes() {
-  gPinnedNotes = StorageServices.load(STORAGE_PINNED_KEY, gDefaultPinnedNote)
-  StorageServices.store(STORAGE_PINNED_KEY, gDefaultPinnedNote);
-}
-_createPinnedNotes()
 
 const gDefaultNotes = [
-  _createNote('text', 'ThisIsBody', 'lightgreen'),
-  _createNote('image', 'https://images.befunky.com/wp/wp-2014-08-milky-way-1023340_1280.jpg?auto=format&fm=jpg&q=75&w=1184&ixlib=js-1.4.1', 'lightsalmon'),
-  _createNote('video', 'https://www.youtube.com/embed/HuS5NuXRb5Y', 'lightblue')
+  _createNote('text', '"Be the change you want to see in the wolrd"', 'lightgreen', true),
+  _createNote('image', 'https://images.befunky.com/wp/wp-2014-08-milky-way-1023340_1280.jpg?auto=format&fm=jpg&q=75&w=1184&ixlib=js-1.4.1', 'lightsalmon', true),
+  _createNote('video', 'https://www.youtube.com/embed/HuS5NuXRb5Y', 'lightblue', false)
 ];
 
 function _creatNotes() {
@@ -47,6 +43,7 @@ _creatNotes();
 
 function save(noteToSave) {
   var savedNote = noteToSave;
+  if (!noteToSave) return
   if (noteToSave.id) {
     const noteIdx = _getIdxById(noteToSave.id);
     gNotes[noteIdx] = noteToSave;
@@ -121,4 +118,5 @@ function remove(noteId) {
   StorageServices.store(STORAGE_KEY, gNotes)
   return Promise.resolve();
 }
+
 

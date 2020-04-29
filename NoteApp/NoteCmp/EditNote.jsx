@@ -1,6 +1,8 @@
 import NewNotePreview from './NewNotePreview.jsx'
 import NoteAppServices from '../service/NoteServices.js';
 import NoteServices from '../service/NoteServices.js';
+const { Link } = ReactRouterDOM;
+
 export default class EditNote extends React.Component{
 
     state = {
@@ -29,16 +31,17 @@ export default class EditNote extends React.Component{
  
     onSaveNote = (ev) => {
         ev.preventDefault()
-        
-        NoteAppServices.save(this.state.newNote)
-        .then(savedNote => {
-            // this.props.history.push('/note')
+        if (this.state.newNote) {
             
-        })
-        .catch(err => {
-            // console.log('OOPs', err);
-            
-        })
+            NoteAppServices.save(this.state.newNote)
+            .then(savedNote => {
+                
+            })
+            .catch(err => {
+                
+     
+            })
+        } else return
     }
 
     onSetBgc = (ev) => {
@@ -81,7 +84,12 @@ export default class EditNote extends React.Component{
                {newNote &&  <NewNotePreview data={newNote.data} dataType={newNote.dataType}></NewNotePreview>}    
             </div>
 
-                <button className="addNoteBtn" onClick={this.onSaveNote}>+</button>
+                
+
+                
+                <button className="addNoteBtn" onClick={this.onSaveNote}><Link to="/note">+</Link></button>
+             
+                
             </div>
         )
     }

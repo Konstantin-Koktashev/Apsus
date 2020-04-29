@@ -1,22 +1,37 @@
 import { PinnedNotes } from '../NoteApp/NoteCmp/PinnedNotes.jsx';
 import { EmailServices } from '../EmailApp/EmailAppServices.js';
 import { EmailOverView } from './OverviewCmps/EmailOverView.jsx';
+import { StorageServices } from '../services/storageService.js';
 
 const Router = ReactRouterDOM.HashRouter;
 const { NavLink } = ReactRouterDOM;
 export class Overview extends React.Component {
   state = {
     emails: null,
+    notes: null
   };
   componentDidMount() {
     this.setState({ emails: EmailServices.getOverviewEmails() });
+   this.loadNotes()
   }
+
+  
+
   onRemove = (id) => {
     EmailServices.remove(id);
     this.setState({ emails: EmailServices.getOverviewEmails() });
   };
+
+ loadNotes = () => {
+  const newNotes = StorageServices.load('notes');
+  this.setState({ notes: newNotes });
+  
+ }
+  
   render() {
     const { emails } = this.state;
+    const { notes } = this.state;
+    
     return (
       <div className="overview">
         <h1>Welcome To Apsus</h1>
@@ -28,7 +43,7 @@ export class Overview extends React.Component {
               <NavLink exact to="/note">
                 Note App
               </NavLink>
-              <PinnedNotes />
+              { notes && <PinnedNotes notes={notes}/>}
             </div>
           </section>
           <section className="book-app-board">

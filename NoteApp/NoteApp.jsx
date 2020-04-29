@@ -22,6 +22,7 @@ export class NoteApp extends React.Component {
   };
   componentDidMount() {
     this.loadNotes();
+    
   }
 
   loadNotes() {
@@ -30,12 +31,6 @@ export class NoteApp extends React.Component {
     });
   }
 
-  // toggleSideBar = () => {
-  //   this.setState((prevState) => ({
-  //     showSideBar: !prevState.showSideBar,
-  //   }));
-  //   console.log(this.state);
-  // };
 
   onSetFilter = (filterBy) => {
     this.setState({ filterBy }, () => this.loadNotes());
@@ -91,7 +86,7 @@ export class NoteApp extends React.Component {
 
               <Route 
                 render={(props) => {
-                  return <PinnedNotes/>
+                  return <PinnedNotes notes={notes}/>
                 }}
                 path="/note/pinned"
               />
