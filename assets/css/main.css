@@ -66,6 +66,7 @@ header h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1em;
 }
 header h3 span{
   text-align: center;
@@ -166,13 +167,13 @@ main h6 {
   position: relative;
   white-space: nowrap;
   will-change: transform, background-color, box-shadow, color, border;
-  font-size: 14px;
+  font-size: 0.9rem;
   color: rgb(255, 255, 255);
   background-color: rgb(255, 0, 131);
   box-shadow: rgba(255, 0, 131, 0.5) 0px 10px 40px -10px;
   outline: none;
   text-decoration: none;
-  padding: 15px;
+  padding: 1em;
   border-radius: 5px;
   border-width: 1px;
   border-style: solid;
@@ -868,26 +869,13 @@ main h6 {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-<<<<<<< HEAD
-
-
-
-/* BookApp */
-
-.bookApp-content header {
-  width: 100vw;
-  display: flex;
-  height: 80px;
-  background-color: lightsalmon;
-}
-=======
 @media (min-width: 1200px) {
 .wrapper{
 height:80vh ;
 }
-
   header {
     height: 20vh;
+    flex-direction: column;
   }
   header h3 span {
     font-size: 3rem;
@@ -900,6 +888,7 @@ height:80vh ;
   .email-wrapper{
     flex-direction: row;
     width: 100%;
+    margin-top: 0em;
   }
   .main-email-app-body{
     flex-grow: 1;
@@ -909,16 +898,31 @@ height:80vh ;
     width: 30vh;
     display: flex;
     flex-direction: column;
-  }.mobile-navigation{
     display: none;
+    display: block;
+  }.mobile-navigation{
+    display: noone;
   }
-  .desktop-nav-bar a{
+  .email-wrapper .desktop-nav-bar a{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10%;
     border-bottom: 1px black solid;
+    font-family: lato;
+    font-size: 1.6rem;
   }
+  header .desktop-nav-bar{
+    width: 100%;
+    justify-content: space-around;
+    
+  } 
+  header .desktop-nav-bar a{
+    margin-right: 1.2em;
+    font-family: lato;
+    font-size: 1.6rem;
+  }
+  
   .logon-hamburger-wrapper {
     display: none;
   }
@@ -950,4 +954,3 @@ height:80vh ;
     color: black;
   }
 }
->>>>>>> cc4321fdd7f261afe6caed02ff664f49f8024c3c
