@@ -47,8 +47,8 @@ export class EmailApp extends React.Component {
     this.loadEmails();
   };
   onCategoryChange =async  (catagory) => {
-    console.log('hello');
     const emails=await EmailServices.getEmailByCatagory(catagory)
+    debugger
     this.setState({emails,catagory})
   };
   render() {

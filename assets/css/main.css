@@ -343,6 +343,7 @@ main h6 {
   grid-row: span 2;
 }
 
+
 .NoteSearchBar {
   width: 100%;
   display: flex;
@@ -900,8 +901,9 @@ height:80vh ;
     flex-direction: column;
     display: none;
     display: block;
-  }.mobile-navigation{
-    display: noone;
+  }
+  .mobile-navigation{
+    display: none;
   }
   .email-wrapper .desktop-nav-bar a{
     display: flex;
@@ -953,4 +955,21 @@ height:80vh ;
   nav .nav-links a {
     color: black;
   }
+  .NoteSearchBar{
+    flex-direction: column;
+   
+  }
+  .NotePage .desktop-nav-bar{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+    font-family: meri;
+    padding: 0.5em;
+    
+  }
+
 }
+

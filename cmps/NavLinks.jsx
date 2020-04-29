@@ -25,11 +25,10 @@ export class NavLinks extends React.Component {
     }
     closeSideMenu=()=>{
      this.setState({isSideMenueShown:false})
-     debugger
     }
     render(){
       let classToSelect = (this.state.isSideMenueShown)? 'show-menue':''
-        const {links,navClass,openClass,closeClass,onCategoryChange}=this.props
+        const {links,navClass,openClass,closeClass,onCategoryChange,closeSideMenu}=this.props
         return (
           <React.Fragment>
               <div className="mobile-navigation">
@@ -50,7 +49,7 @@ export class NavLinks extends React.Component {
     </section>
     </div>
     <div className="desktop-nav-bar">
-    {links.map(link => <SingleNavLink key={ link.id }  url={link.url}  name={link.name} onCategoryChange={onCategoryChange} />) }
+    {links.map(link => <SingleNavLink key={ link.id }  url={link.url}  name={link.name} onCategoryChange={onCategoryChange} closeSideMenu={closeSideMenu}/>) }
 
     </div>
     </React.Fragment>
