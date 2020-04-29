@@ -8,7 +8,7 @@ import { NavLinks } from '../cmps/NavLinks.jsx';
 import { Filter } from '../cmps/Filter.jsx';
 
 const Router = ReactRouterDOM.HashRouter;
-const { Route, Switch } = ReactRouterDOM;
+const { Route, Switch, Link } = ReactRouterDOM;
 const { createBrowserHistory } = History;
 const history = createBrowserHistory();
 
@@ -41,6 +41,8 @@ export class NoteApp extends React.Component {
     this.setState({ filterBy }, () => this.loadNotes());
   };
 
+  
+
   render() {
     const { notes } = this.state;
     const links = [
@@ -69,6 +71,15 @@ export class NoteApp extends React.Component {
         </div>
 
         <h1>Manage your notes</h1>
+
+        <div className="addBtnContainer">
+        <Link to="/note/edit">
+          <button className="addNoteBtn">
+            +
+          </button>{' '}
+        </Link>
+      </div>
+      
 
         <Switch>
           <Route

@@ -12,9 +12,11 @@ export function NotePreviewToolBar(props) {
 
     onPinNote = (ev) => {
         ev.preventDefault();
-
+        const icon = ev.target;
+        console.log(note)
        if (note.isPinned) {
         note.isPinned = false
+        icon.style = ``;
         const pinnedNotes = StorageServices.load('pinnedNotes')
         const pinnedNoteIdx = pinnedNotes.findIndex((pinnedNote) => pinnedNote.id === note.id);
         pinnedNotes.splice(pinnedNoteIdx, 1)
@@ -22,6 +24,7 @@ export function NotePreviewToolBar(props) {
         NoteService.save(note);
        }  else {
         note.isPinned = true;
+        icon.style = `border: solid 1px #333; border-radius: 50%;`;
         NoteService.savePinnedNote(note)
         NoteService.save(note);
        } 
@@ -46,7 +49,7 @@ export function NotePreviewToolBar(props) {
     onPaintNote = (ev) => {
         ev.preventDefault()
        const colorBar = document.querySelector(`#${note.id}`);
-       console.log(paintBarIsShown)
+       
        if (!paintBarIsShown) {
         colorBar.style = "transform: translateX(0px);" 
         paintBarIsShown = true
@@ -65,7 +68,7 @@ export function NotePreviewToolBar(props) {
     
     return (
         <div className="noteToolBar">
-        <button onClick={onPinNote}><img src="../assets/img/noteicons/pin icon.png" className="pin-icon" ></img></button>
+        <button onClick={onPinNote}><img src="../assets/img/noteicons/pin icon.svg" className="pin-icon" ></img></button>
         <button onClick={onDeleteNote}><img src="../assets/img/noteicons/delete icon.png" className="delete-icon"></img> </button>
         <button onClick={onPaintNote}><img src="../assets/img/noteicons/paint icon.png" className="paint-icon"></img> </button>
 

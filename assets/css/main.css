@@ -426,12 +426,18 @@ h3 {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: rgb(255, 0, 131);
+  border: rgba(107, 107, 107, 0.555) 1px solid;
+  background-color: rgba(131, 131, 131, 0.651);
   font-size: 2.5rem;
   font-weight: bold;
   color: #fff;
-  margin-top: 60px;
-  margin-left: 70%;
+  right: 10px;
+}
+
+.addBtnContainer {
+  width: 90vw;
+  text-align: center;
+  margin: 1rem auto;
 }
 
 .NotePage h1 {
@@ -575,9 +581,10 @@ h3 {
 /* Icons */
 
 .pin-icon {
-  bottom: 5px;
-  right: 10px;
   position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 30px;
 }
 
 .delete-icon {
